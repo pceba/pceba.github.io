@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pablo Ceballos Arenas</title>
-  <meta name="description" content="Pablo Ceballos Arenas — on machines that learn, and what changes when they do. Computer Science & Business at CUNEF.">
+  <meta name="description" content="Pablo Ceballos Arenas — Computer Science & Business at CUNEF. Agentic AI, machine learning, and how organisations put them to use.">
   <meta name="author" content="Pablo Ceballos Arenas">
   <meta name="theme-color" content="#f2e9da">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Pablo Ceballos Arenas">
-  <meta property="og:description" content="On machines that learn, and what changes when they do.">
+  <meta property="og:description" content="Agentic AI, machine learning, and how organisations put them to use.">
   <meta property="og:url" content="https://pceba.github.io/">
   <meta property="og:image" content="https://pceba.github.io/assets/img/portrait-warm.jpg">
 
@@ -20,30 +20,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <script>
-    (function () {
-      var l;
-      try { l = localStorage.getItem('lang'); } catch (e) {}
-      if (!l) l = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
-      document.documentElement.lang = l;
-    })();
-  </script>
 </head>
 <body>
 
   <header class="nav">
     <a href="#top" class="nav__mark" aria-label="Top">P<i>c</i>A</a>
     <nav class="nav__links" aria-label="Sections">
-      <a href="#history"><span class="en">History</span><span class="es">Historia</span></a>
-      <a href="#machine"><span class="en">The machine</span><span class="es">La máquina</span></a>
-      <a href="#work"><span class="en">Work</span><span class="es">Trabajo</span></a>
-      <a href="#club"><span class="en">The club</span><span class="es">El club</span></a>
-      <a href="#places"><span class="en">Places</span><span class="es">Lugares</span></a>
+      <a href="#outlook">Outlook</a>
+      <a href="#agent">Agents</a>
+      <a href="#lab">Lab</a>
+      <a href="#work">Work</a>
+      <a href="#club">Club</a>
+      <a href="#study">Study</a>
     </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-set-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-set-lang="es">ES</button>
-    </div>
+    <a class="nav__cta" href="#contact">Contact</a>
   </header>
 
   <main id="top">
@@ -51,24 +41,19 @@
     <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="hero__text">
-        <p class="kicker rise" style="--d:0">
-          <span class="en">Madrid &mdash; now writing from Singapore</span>
-          <span class="es">Madrid &mdash; ahora escribiendo desde Singapur</span>
-        </p>
+        <p class="kicker rise" style="--d:0">Madrid &middot; currently in Singapore</p>
         <h1 class="hero__name">
           <span class="rise" style="--d:1">Pablo</span>
           <span class="rise" style="--d:2">Ceballos <em>Arenas</em></span>
         </h1>
         <p class="hero__line rise" style="--d:3">
-          <span class="en">I study how machines learn &mdash; and what changes when they do.</span>
-          <span class="es">Estudio cómo aprenden las máquinas &mdash; y qué cambia cuando lo hacen.</span>
+          I work on machine learning and agentic AI, and on the less obvious question of how organisations actually put them to use.
         </p>
         <p class="hero__body rise" style="--d:4">
-          <span class="en">Computer Science and Business at CUNEF. Summers spent at Kearney and Oliver Wyman; evenings spent wondering where all of this is going.</span>
-          <span class="es">Ingeniería Informática y ADE en CUNEF. Veranos en Kearney y Oliver Wyman; noches preguntándome hacia dónde va todo esto.</span>
+          Computer Science and Business Administration at CUNEF. Data &amp; Analytics intern at Oliver Wyman, previously Kearney. This semester on exchange at Singapore Management University.
         </p>
-        <a href="#epigraph" class="scroll-cue rise" style="--d:5">
-          <span class="en">Begin</span><span class="es">Empezar</span>
+        <a href="#outlook" class="scroll-cue rise" style="--d:5">
+          Read on
           <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 1v19M1 14l6 6 6-6"/></svg>
         </a>
       </div>
@@ -78,180 +63,107 @@
           <img class="portrait__warm" src="assets/img/portrait-warm.jpg" alt="Pablo Ceballos Arenas" width="900" height="1004">
           <img class="portrait__color" src="assets/img/portrait.jpg" alt="" aria-hidden="true" width="900" height="1004">
         </div>
-        <figcaption>
-          <span class="en">fig. 1 &mdash; the author</span>
-          <span class="es">fig. 1 &mdash; el autor</span>
-        </figcaption>
       </figure>
     </section>
 
-    <!-- ================= EPIGRAPH ================= -->
-    <section class="epigraph" id="epigraph">
-      <blockquote class="reveal">
-        <p class="en">&ldquo;The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves.&rdquo;</p>
-        <p class="es">&laquo;La Máquina Analítica teje patrones algebraicos igual que el telar de Jacquard teje flores y hojas.&raquo;</p>
-        <footer>Ada Lovelace, 1843</footer>
-      </blockquote>
-      <p class="epigraph__note reveal">
-        <span class="en">She saw it before anyone. A machine that follows rules can make something beautiful. Nearly two centuries later, we are still finding out how far that goes.</span>
-        <span class="es">Ella lo vio antes que nadie: una máquina que sigue reglas puede crear algo bello. Casi dos siglos después, seguimos descubriendo hasta dónde llega eso.</span>
-      </p>
+    <!-- ================= OUTLOOK ================= -->
+    <section class="outlook" id="outlook">
+      <header class="section-head reveal">
+        <p class="label">I.</p>
+        <h2>Where I think <em>this is going</em></h2>
+        <p class="section-intro">
+          Models are moving from answering questions to carrying out work: planning a task, using tools, checking the result. I spent this summer building one of these systems for credit risk. A few things I took away from it.
+        </p>
+      </header>
+
+      <ol class="theses">
+        <li class="thesis reveal">
+          <span class="thesis__num">01</span>
+          <h3>From answers to actions</h3>
+          <p>The shift isn't a smarter chatbot. It's software that can take a goal, break it into steps and execute them. The hard question stops being <em>can the model do it</em> and becomes <em>can we trust it to</em>.</p>
+        </li>
+        <li class="thesis reveal">
+          <span class="thesis__num">02</span>
+          <h3>The model is the easy part</h3>
+          <p>In a bank, most of the effort goes into data quality, governance and validation. An agent is only as useful as the data it reads and the controls around what it does.</p>
+        </li>
+        <li class="thesis reveal">
+          <span class="thesis__num">03</span>
+          <h3>Experts stay in the loop</h3>
+          <p>The most useful agents I can picture make a specialist faster rather than replacing them: they do the repetitive groundwork and leave the judgement calls to a person.</p>
+        </li>
+      </ol>
     </section>
 
-    <!-- ================= HISTORY (scroll-linked) ================= -->
-    <section class="history" id="history">
-      <div class="history__pin">
-        <header class="history__head">
-          <p class="label">I.</p>
-          <h2>
-            <span class="en">A short history of <em>thinking machines</em></span>
-            <span class="es">Breve historia de las <em>máquinas que piensan</em></span>
-          </h2>
-          <p class="history__hint">
-            <span class="en">Keep scrolling &mdash; my own entries are marked in ink.</span>
-            <span class="es">Sigue bajando &mdash; mis propias entradas están marcadas en tinta.</span>
-          </p>
-        </header>
+    <!-- ================= AGENT DEMO ================= -->
+    <section class="agent" id="agent">
+      <header class="section-head reveal">
+        <p class="label">II.</p>
+        <h2>What an agent <em>actually does</em></h2>
+        <p class="section-intro">
+          A simplified walk-through of an agent drafting a credit risk model, loosely based on the kind of tool I built at Oliver Wyman. The steps are illustrative and contain no client data. Note where it stops and waits for a person.
+        </p>
+      </header>
 
-        <div class="history__viewport">
-          <ol class="history__track">
-            <li class="moment">
-              <span class="moment__year">1843</span>
-              <h3>Ada Lovelace</h3>
-              <p class="en">Publishes the first algorithm meant for a machine, for an engine that was never built.</p>
-              <p class="es">Publica el primer algoritmo pensado para una máquina, para un motor que nunca llegó a construirse.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">1950</span>
-              <h3>Alan Turing</h3>
-              <p class="en">Asks, plainly, &ldquo;Can machines think?&rdquo;, and proposes a game to find out.</p>
-              <p class="es">Pregunta, sin rodeos, &ldquo;¿Pueden pensar las máquinas?&rdquo;, y propone un juego para averiguarlo.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">1956</span>
-              <h3>Dartmouth</h3>
-              <p class="en">A summer workshop gives the field its name: artificial intelligence.</p>
-              <p class="es">Un taller de verano le da nombre al campo: inteligencia artificial.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">1958</span>
-              <h3><span class="en">The perceptron</span><span class="es">El perceptrón</span></h3>
-              <p class="en">Frank Rosenblatt builds a machine that learns from examples. One neuron, and a very big idea.</p>
-              <p class="es">Frank Rosenblatt construye una máquina que aprende de ejemplos. Una neurona, y una idea enorme.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">1986</span>
-              <h3>Backpropagation</h3>
-              <p class="en">Rumelhart, Hinton and Williams show how many layers can learn together, by passing the error back.</p>
-              <p class="es">Rumelhart, Hinton y Williams muestran cómo muchas capas pueden aprender juntas, devolviendo el error hacia atrás.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">1997</span>
-              <h3>Deep Blue</h3>
-              <p class="en">Beats Kasparov at chess. The world notices, and worries a little.</p>
-              <p class="es">Gana a Kasparov al ajedrez. El mundo lo nota, y se preocupa un poco.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">2012</span>
-              <h3>AlexNet</h3>
-              <p class="en">A deep network learns to see, and wins ImageNet by a wide margin. The deep learning era begins.</p>
-              <p class="es">Una red profunda aprende a ver y gana ImageNet por goleada. Empieza la era del deep learning.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">2016</span>
-              <h3>AlphaGo</h3>
-              <p class="en">Move 37 against Lee Sedol. A move no human would have played, and it was beautiful.</p>
-              <p class="es">Movimiento 37 contra Lee Sedol. Una jugada que ningún humano habría hecho, y era preciosa.</p>
-            </li>
-            <li class="moment">
-              <span class="moment__year">2017</span>
-              <h3>Attention</h3>
-              <p class="en">&ldquo;Attention Is All You Need&rdquo; introduces the Transformer. Almost everything since is built on it.</p>
-              <p class="es">&ldquo;Attention Is All You Need&rdquo; presenta el Transformer. Casi todo lo que vino después se apoya en él.</p>
-            </li>
-            <li class="moment moment--me">
-              <span class="moment__year">2022</span>
-              <h3><span class="en">I start</span><span class="es">Empiezo</span></h3>
-              <p class="en">Computer Science and Business at CUNEF. That same autumn ChatGPT is released, and suddenly everyone is talking about what I study.</p>
-              <p class="es">Informática y ADE en CUNEF. Ese mismo otoño sale ChatGPT, y de repente todo el mundo habla de lo que estudio.</p>
-            </li>
-            <li class="moment moment--me">
-              <span class="moment__year">2025</span>
-              <h3>Kearney</h3>
-              <p class="en">First summer in consulting. I learn that technology is only half the problem; the other half is people deciding to use it.</p>
-              <p class="es">Primer verano en consultoría. Aprendo que la tecnología es solo la mitad del problema; la otra mitad es que la gente decida usarla.</p>
-            </li>
-            <li class="moment moment--me">
-              <span class="moment__year">2026</span>
-              <h3><span class="en">Agents</span><span class="es">Agentes</span></h3>
-              <p class="en">Machines that don't just answer, but act. I spend the summer at Oliver Wyman building one for credit risk.</p>
-              <p class="es">Máquinas que no solo responden, sino que actúan. Paso el verano en Oliver Wyman construyendo una para riesgo de crédito.</p>
-            </li>
-            <li class="moment moment--next">
-              <span class="moment__year">20··</span>
-              <h3><span class="en">Next</span><span class="es">Lo siguiente</span></h3>
-              <p class="en">This entry hasn't been written yet. I'd like to help write it.</p>
-              <p class="es">Esta entrada aún no está escrita. Me gustaría ayudar a escribirla.</p>
-            </li>
-          </ol>
+      <div class="console reveal" id="console">
+        <div class="console__bar">
+          <span class="console__title">agent &middot; lgd-draft</span>
+          <span class="console__status" id="agent-status">idle</span>
         </div>
-
-        <div class="history__progress" aria-hidden="true"><span></span></div>
+        <ol class="console__log" id="agent-log" aria-live="polite"></ol>
+        <div class="console__actions">
+          <button type="button" class="btn-ink" id="agent-run">Run the agent</button>
+          <button type="button" class="btn-ink btn-ink--approve" id="agent-approve" hidden>Approve and continue</button>
+          <button type="button" class="btn-line" id="agent-reject" hidden>Send back</button>
+        </div>
       </div>
     </section>
 
-    <!-- ================= MACHINE (live neural net) ================= -->
-    <section class="machine" id="machine">
+    <!-- ================= LAB (live neural net) ================= -->
+    <section class="machine" id="lab">
       <header class="section-head reveal">
-        <p class="label">II.</p>
-        <h2>
-          <span class="en">Teach a <em>machine</em></span>
-          <span class="es">Enséñale a una <em>máquina</em></span>
-        </h2>
+        <p class="label">III.</p>
+        <h2>Machine learning, <em>up close</em></h2>
         <p class="section-intro">
-          <span class="en">Below is a small neural network, two dozen neurons, learning in your browser as you watch. Place a few points of each colour and it will try to understand what you mean. It's the same idea behind every model in the history above, only smaller.</span>
-          <span class="es">Aquí abajo hay una pequeña red neuronal, un par de docenas de neuronas, aprendiendo en tu navegador mientras miras. Coloca algunos puntos de cada color e intentará entender qué quieres decir. Es la misma idea que hay detrás de cada modelo de la historia de arriba, solo que más pequeña.</span>
+          Underneath every agent there's a model that learned from examples. This is a small neural network trained live in your browser: place points of two colours and watch it learn a boundary between them. It's the same principle at toy scale.
         </p>
       </header>
 
       <div class="lab reveal">
         <div class="lab__stage">
           <canvas id="field" aria-label="Interactive neural network playground"></canvas>
-          <p class="lab__tip">
-            <span class="en">Click to place a point &middot; right-click for the other colour</span>
-            <span class="es">Clic para poner un punto &middot; clic derecho para el otro color</span>
-          </p>
+          <p class="lab__tip">Click to place a point &middot; right-click for the other colour</p>
         </div>
 
         <aside class="lab__side">
           <div class="lab__group">
-            <p class="lab__label"><span class="en">Ink</span><span class="es">Tinta</span></p>
+            <p class="lab__label">Class</p>
             <div class="swatches">
-              <button type="button" class="swatch is-on" data-cls="1"><i class="dot dot--a"></i><span class="en">Terracotta</span><span class="es">Terracota</span></button>
-              <button type="button" class="swatch" data-cls="0"><i class="dot dot--b"></i><span class="en">Olive</span><span class="es">Oliva</span></button>
+              <button type="button" class="swatch is-on" data-cls="1"><i class="dot dot--a"></i>Terracotta</button>
+              <button type="button" class="swatch" data-cls="0"><i class="dot dot--b"></i>Olive</button>
             </div>
           </div>
 
           <div class="lab__group">
-            <p class="lab__label"><span class="en">Or try a shape</span><span class="es">O prueba una forma</span></p>
+            <p class="lab__label">Datasets</p>
             <div class="presets">
-              <button type="button" data-preset="circle"><span class="en">Circle</span><span class="es">Círculo</span></button>
+              <button type="button" data-preset="circle">Circle</button>
               <button type="button" data-preset="xor">XOR</button>
-              <button type="button" data-preset="spiral"><span class="en">Spiral</span><span class="es">Espiral</span></button>
-              <button type="button" data-preset="clear"><span class="en">Clear</span><span class="es">Borrar</span></button>
+              <button type="button" data-preset="spiral">Spiral</button>
+              <button type="button" data-preset="clear">Clear</button>
             </div>
           </div>
 
           <div class="lab__group">
-            <p class="lab__label"><span class="en">Its connections, live</span><span class="es">Sus conexiones, en vivo</span></p>
+            <p class="lab__label">Weights, live</p>
             <canvas id="net" aria-hidden="true"></canvas>
-            <p class="lab__arch">2 &rarr; 12 &rarr; 12 &rarr; 1</p>
+            <p class="lab__arch">2 &rarr; 12 &rarr; 12 &rarr; 1 &middot; tanh &middot; Adam</p>
           </div>
 
           <dl class="lab__stats">
-            <div><dt><span class="en">steps</span><span class="es">pasos</span></dt><dd id="stat-steps">0</dd></div>
-            <div><dt><span class="en">loss</span><span class="es">error</span></dt><dd id="stat-loss">&mdash;</dd></div>
-            <div><dt><span class="en">points</span><span class="es">puntos</span></dt><dd id="stat-points">0</dd></div>
+            <div><dt>steps</dt><dd id="stat-steps">0</dd></div>
+            <div><dt>loss</dt><dd id="stat-loss">&mdash;</dd></div>
+            <div><dt>points</dt><dd id="stat-points">0</dd></div>
           </dl>
         </aside>
       </div>
@@ -260,69 +172,58 @@
     <!-- ================= WORK ================= -->
     <section class="work" id="work">
       <header class="section-head reveal">
-        <p class="label">III.</p>
-        <h2>
-          <span class="en">Where I've <em>put it to work</em></span>
-          <span class="es">Dónde lo he <em>puesto a trabajar</em></span>
-        </h2>
+        <p class="label">IV.</p>
+        <h2>Work</h2>
       </header>
 
       <article class="chapter reveal">
         <div class="chapter__meta">
-          <span class="chapter__when">
-            <span class="en">Summer 2026</span><span class="es">Verano 2026</span>
-          </span>
+          <span class="chapter__when">Jun &ndash; Jul 2026</span>
           <h3>Oliver Wyman</h3>
-          <span class="chapter__role">Data &amp; Analytics</span>
+          <span class="chapter__role">Data &amp; Analytics Consulting Intern</span>
         </div>
         <div class="chapter__text">
-          <p class="lead en">I built an agent that helps build risk models.</p>
-          <p class="lead es">Construí un agente que ayuda a construir modelos de riesgo.</p>
-          <p class="en">An internal tool in Streamlit that uses agentic AI to speed up how banks create LGD models. I got to demo it live in client proposal meetings, working directly with senior leadership. In parallel I worked on data quality and governance for a Tier-1 German bank's CCF models: the unglamorous, essential part of trusting a model at all.</p>
-          <p class="es">Una herramienta interna en Streamlit que usa IA agéntica para acelerar cómo los bancos crean modelos de LGD. La presenté en directo en reuniones con clientes, trabajando directamente con la dirección. En paralelo trabajé en calidad y gobierno del dato para los modelos de CCF de un banco alemán Tier-1: la parte poco glamurosa, pero imprescindible, de poder fiarse de un modelo.</p>
+          <p class="lead">An agentic AI tool for building LGD models.</p>
+          <p>I developed an internal, client-facing tool in Streamlit that uses agentic AI to speed up the creation of loss-given-default models, and presented live demos of it in client proposal meetings alongside senior leadership.</p>
+          <p>At the same time I supported the risk modelling workstream for a Tier-1 German bank, running data quality assessments and governance controls on large financial datasets ahead of CCF regulatory model development. Balancing both, with two engagement managers, taught me a lot about prioritising.</p>
+          <ul class="chips"><li>Agentic AI</li><li>Streamlit</li><li>Python</li><li>Credit risk</li><li>Data governance</li></ul>
         </div>
       </article>
 
       <article class="chapter reveal">
         <div class="chapter__meta">
-          <span class="chapter__when">
-            <span class="en">Summer 2025</span><span class="es">Verano 2025</span>
-          </span>
+          <span class="chapter__when">Jun &ndash; Jul 2025</span>
           <h3>Kearney</h3>
-          <span class="chapter__role">Business Analyst</span>
+          <span class="chapter__role">Business Analyst Intern</span>
         </div>
         <div class="chapter__text">
-          <p class="lead en">Helping a trucking company become a software company.</p>
-          <p class="lead es">Ayudar a una empresa de camiones a convertirse en una empresa de software.</p>
-          <p class="en">A pro-bono project for a road freight operator building its own fleet-planning platform. I owned the market side: a European freight assessment, conversations with more than five C-suite executives about how the industry adopts technology, and 150+ prospective clients segmented into a go-to-market plan.</p>
-          <p class="es">Un proyecto pro-bono para un operador de transporte por carretera que estaba construyendo su propia plataforma de planificación de flotas. Me encargué de la parte de mercado: un análisis del transporte europeo, conversaciones con más de cinco directivos sobre cómo adopta tecnología el sector, y más de 150 clientes potenciales segmentados en un plan de salida al mercado.</p>
+          <p class="lead">Go-to-market for a freight operator's own software.</p>
+          <p>A pro-bono project for a road freight company building in-house SaaS for fleet planning, subcontracting and truck monitoring. I owned an independent workstream: a European freight market assessment, 5+ interviews with C-suite executives on technology adoption, and a segmentation of 150+ prospective clients that shaped the product's positioning and go-to-market. It ended with a 50+ slide presentation to senior leadership.</p>
+          <ul class="chips"><li>Market analysis</li><li>Executive interviews</li><li>Excel modelling</li><li>Go-to-market</li></ul>
         </div>
       </article>
 
       <div class="side-projects reveal">
-        <p class="label-sm"><span class="en">And on my own time</span><span class="es">Y por mi cuenta</span></p>
+        <p class="label-sm">Projects</p>
         <ul>
           <li>
             <a href="https://github.com/pceba/Credit-Approval-Prediction" target="_blank" rel="noopener">
               <span class="sp__title">Credit Approval Prediction</span>
-              <span class="sp__desc en">Teaching a model when a bank should say yes.</span>
-              <span class="sp__desc es">Enseñar a un modelo cuándo un banco debería decir que sí.</span>
+              <span class="sp__desc">Classification model predicting whether a credit application is approved.</span>
               <span class="sp__tag">Python &middot; ML &nearr;</span>
             </a>
           </li>
           <li>
             <a href="https://github.com/pceba/Planetarian-Exploration-Simulation" target="_blank" rel="noopener">
               <span class="sp__title">Planetary Exploration</span>
-              <span class="sp__desc en">A fleet of autonomous robots mapping a planet, one event at a time.</span>
-              <span class="sp__desc es">Una flota de robots autónomos explorando un planeta, evento a evento.</span>
+              <span class="sp__desc">Discrete-event simulation of a fleet of autonomous robots.</span>
               <span class="sp__tag">Python &middot; Simulation &nearr;</span>
             </a>
           </li>
           <li>
             <div>
               <span class="sp__title">Road Safety Econometrics</span>
-              <span class="sp__desc en">Do road safety policies actually save lives? Regression says: it depends.</span>
-              <span class="sp__desc es">¿Salvan vidas las políticas de seguridad vial? La regresión dice: depende.</span>
+              <span class="sp__desc">Regression analysis of the impact of road safety policies.</span>
               <span class="sp__tag">R</span>
             </div>
           </li>
@@ -333,95 +234,80 @@
     <!-- ================= CLUB ================= -->
     <section class="club" id="club">
       <header class="section-head reveal">
-        <p class="label">IV.</p>
-        <h2>
-          <span class="en">Something I <em>started</em></span>
-          <span class="es">Algo que <em>empecé</em></span>
-        </h2>
+        <p class="label">V.</p>
+        <h2>CUNEF <em>Consulting Club</em></h2>
       </header>
 
       <div class="club__intro reveal">
         <div class="club__count">
           <span class="count" data-to="400">0</span><span class="count__plus">+</span>
-          <span class="club__count-label"><span class="en">members, from zero</span><span class="es">miembros, desde cero</span></span>
+          <span class="club__count-label">members since founding</span>
         </div>
         <div class="club__text">
-          <p class="en">In 2025 I founded the <strong>CUNEF Consulting Club</strong>, so students could discover strategy consulting early, not by accident. We bring firms like BCG, Bain, Kearney and Strategy&amp; into the classroom, visit their offices, and practise cases together until they stop being frightening.</p>
-          <p class="es">En 2025 fundé el <strong>CUNEF Consulting Club</strong>, para que los estudiantes descubran la consultoría estratégica pronto, y no por casualidad. Traemos a firmas como BCG, Bain, Kearney o Strategy&amp; a clase, visitamos sus oficinas y practicamos casos juntos hasta que dejan de dar miedo.</p>
+          <p>I founded the club and still lead it as president. We organise sessions and office visits with consulting firms, ran an executive panel on the industry that I chaired, and built a shared library of case frameworks with study groups to prepare for interviews.</p>
         </div>
       </div>
 
       <div class="prints">
         <button type="button" class="print reveal" style="--r:-2.5deg" data-full="assets/img/club-executive-panel.jpg">
           <img src="assets/img/club-executive-panel.jpg" alt="" loading="lazy" width="1600" height="1200">
-          <span class="print__cap en">The executive panel I chaired: Bain, KPMG, DXC, Strategy&amp;</span>
-          <span class="print__cap es">El panel de directivos que moderé: Bain, KPMG, DXC, Strategy&amp;</span>
+          <span class="print__cap">Executive panel with Bain, KPMG, DXC and Strategy&amp;</span>
         </button>
         <button type="button" class="print reveal" style="--r:1.8deg" data-full="assets/img/club-kearney-visit.jpg">
           <img src="assets/img/club-kearney-visit.jpg" alt="" loading="lazy" width="1600" height="1200">
-          <span class="print__cap en">A morning at Kearney's Madrid office</span>
-          <span class="print__cap es">Una mañana en la oficina de Kearney en Madrid</span>
+          <span class="print__cap">Visit to Kearney's Madrid office</span>
         </button>
         <button type="button" class="print reveal" style="--r:-1.2deg" data-full="assets/img/club-bcg.jpg">
           <img src="assets/img/club-bcg.jpg" alt="" loading="lazy" width="1600" height="1200">
-          <span class="print__cap en">The team, the day BCG came to visit</span>
-          <span class="print__cap es">El equipo, el día que vino BCG</span>
+          <span class="print__cap">Session with BCG</span>
         </button>
         <button type="button" class="print reveal" style="--r:2.6deg" data-full="assets/img/club-intro-session.jpg">
           <img src="assets/img/club-intro-session.jpg" alt="" loading="lazy" width="1600" height="1200">
-          <span class="print__cap en">First session: what does a consultant actually do?</span>
-          <span class="print__cap es">Primera sesión: ¿qué hace realmente un consultor?</span>
+          <span class="print__cap">Introductory session on strategy consulting</span>
         </button>
       </div>
     </section>
 
-    <!-- ================= PLACES ================= -->
-    <section class="places" id="places">
+    <!-- ================= STUDY ================= -->
+    <section class="places" id="study">
       <header class="section-head reveal">
-        <p class="label">V.</p>
-        <h2>
-          <span class="en">Three cities, <em>three clocks</em></span>
-          <span class="es">Tres ciudades, <em>tres relojes</em></span>
-        </h2>
+        <p class="label">VI.</p>
+        <h2>Study, <em>in three time zones</em></h2>
       </header>
 
       <div class="cities">
         <article class="city reveal" data-tz="Europe/Madrid">
           <p class="city__time"><span class="t">--:--</span></p>
           <h3>Madrid</h3>
-          <p class="city__coord">40.44° N, 3.70° W</p>
-          <p class="en">Home, and CUNEF. A double degree in Computer Science and Business, with First Class Honours, and in the top 1% in Machine Learning.</p>
-          <p class="es">Casa, y CUNEF. Doble grado en Informática y ADE, con First Class Honours, y en el 1% superior en Machine Learning.</p>
+          <p class="city__coord">CUNEF &middot; 2022 &ndash; 2027</p>
+          <p>Double degree in Computer Science and Business Administration. First Class Honours; top 1% in Machine Learning and Digital Entrepreneurship, top 3% in AI, Neural Networks &amp; Deep Learning, and Cybersecurity.</p>
         </article>
         <article class="city reveal" data-tz="Europe/Berlin">
           <p class="city__time"><span class="t">--:--</span></p>
-          <h3><span class="en">Cologne</span><span class="es">Colonia</span></h3>
-          <p class="city__coord">50.94° N, 6.96° E</p>
-          <p class="en">Autumn 2024 at CBS International Business School: management consulting, financial analysis, and 91 out of 100.</p>
-          <p class="es">Otoño de 2024 en CBS International Business School: consultoría, análisis financiero y un 91 sobre 100.</p>
+          <h3>Cologne</h3>
+          <p class="city__coord">CBS International Business School &middot; 2024</p>
+          <p>Exchange semester. Management Consulting, Financial Analysis and Operations Management; academic score 91/100.</p>
         </article>
         <article class="city city--now reveal" data-tz="Asia/Singapore">
-          <p class="city__time"><span class="t">--:--</span><span class="city__now"><span class="en">I'm here</span><span class="es">Estoy aquí</span></span></p>
-          <h3><span class="en">Singapore</span><span class="es">Singapur</span></h3>
-          <p class="city__coord">1.29° N, 103.85° E</p>
-          <p class="en">Right now: exchange semester at Singapore Management University, studying financial and data analytics where half the future is being built.</p>
-          <p class="es">Ahora mismo: semestre de intercambio en Singapore Management University, estudiando analítica financiera y de datos donde se está construyendo medio futuro.</p>
+          <p class="city__time"><span class="t">--:--</span><span class="city__now">now</span></p>
+          <h3>Singapore</h3>
+          <p class="city__coord">Singapore Management University &middot; 2026</p>
+          <p>Exchange semester. Financial Analytics, Data Analytics, and Service Processes &amp; Digital Business.</p>
         </article>
       </div>
 
-      <p class="places__more reveal">
-        <span class="en">Also: four seasons as basketball captain, tutoring students through the Spanish university entrance exam, and afternoons with residents at a nursing home. And English at C2.</span>
-        <span class="es">También: cuatro temporadas como capitán de baloncesto, clases particulares para preparar la EvAU y tardes acompañando a mayores en residencias. Y el inglés, en C2.</span>
-      </p>
+      <dl class="extras reveal">
+        <div><dt>Languages</dt><dd>Spanish (native), English (C2, IELTS Academic 8.0)</dd></div>
+        <div><dt>Technical</dt><dd>Python, SQL, R, C++, Git, Microsoft Office</dd></div>
+        <div><dt>Also</dt><dd>Basketball team captain for four seasons &middot; EvAU tutor in maths, physics, chemistry and English &middot; Volunteer with elderly residents in nursing homes</dd></div>
+      </dl>
     </section>
 
     <!-- ================= CONTACT ================= -->
     <section class="contact" id="contact">
-      <p class="label reveal">VI.</p>
-      <h2 class="reveal">
-        <span class="en">Let's write the <em>next entry</em>.</span>
-        <span class="es">Escribamos la <em>siguiente entrada</em>.</span>
-      </h2>
+      <p class="label reveal">VII.</p>
+      <h2 class="reveal">Let's <em>talk</em>.</h2>
+      <p class="contact__sub reveal">Always happy to talk about agentic AI, machine learning or consulting.</p>
       <a class="contact__mail reveal" href="mailto:pablo.ceballos.a@gmail.com">pablo.ceballos.a@gmail.com</a>
       <ul class="contact__links reveal">
         <li><a href="https://linkedin.com/in/pablo-ceballos-arenas" target="_blank" rel="noopener">LinkedIn &nearr;</a></li>
@@ -432,8 +318,7 @@
 
   <footer class="foot">
     <span>&copy; <span id="year">2026</span> Pablo Ceballos Arenas</span>
-    <span class="en">Madrid &middot; Cologne &middot; Singapore</span>
-    <span class="es">Madrid &middot; Colonia &middot; Singapur</span>
+    <span>Madrid &middot; Singapore</span>
   </footer>
 
   <dialog class="lightbox" id="lightbox">

@@ -9,15 +9,6 @@
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
-  /* ---------------- Language ---------------- */
-  $$('[data-set-lang]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var l = b.getAttribute('data-set-lang');
-      root.lang = l;
-      try { localStorage.setItem('lang', l); } catch (e) {}
-    });
-  });
-
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------------- Nav state ---------------- */
@@ -68,39 +59,6 @@
     })(t0);
   }
 
-  /* ---------------- History: scroll-linked track ---------------- */
-  (function history() {
-    var sec = $('#history');
-    var track = $('.history__track', sec);
-    var bar = $('.history__progress span', sec);
-    var moments = $$('.moment', sec);
-    if (reduceMotion) return;
-
-    sec.classList.add('is-pinned');
-    var dist = 0;
-
-    function measure() {
-      dist = Math.max(0, track.scrollWidth - window.innerWidth);
-      sec.style.height = (window.innerHeight + dist) + 'px';
-      update();
-    }
-    function update() {
-      var r = sec.getBoundingClientRect();
-      var span = sec.offsetHeight - window.innerHeight;
-      var p = span > 0 ? clamp(-r.top / span, 0, 1) : 0;
-      track.style.transform = 'translate3d(' + (-p * dist).toFixed(1) + 'px,0,0)';
-      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-      var edge = window.innerWidth * 0.86;
-      moments.forEach(function (m) {
-        m.classList.toggle('lit', m.getBoundingClientRect().left < edge);
-      });
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', measure);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    measure();
-  })();
-
   /* ---------------- Clocks ---------------- */
   (function clocks() {
     var cities = $$('.city[data-tz]');
@@ -128,13 +86,157 @@
     $$('.print').forEach(function (p) {
       p.addEventListener('click', function () {
         img.src = p.getAttribute('data-full');
-        var c = $('.print__cap.' + root.lang, p);
+        var c = $('.print__cap', p);
         cap.textContent = c ? c.textContent : '';
         img.alt = cap.textContent;
         dlg.showModal();
       });
     });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  })();
+
+  /* =========================================================
+     Agent walk-through (illustrative, no real data)
+     ========================================================= */
+  (function agent() {
+    var log = $('#agent-log');
+    if (!log) return;
+    var status = $('#agent-status');
+    var runBtn = $('#agent-run'), okBtn = $('#agent-approve'), backBtn = $('#agent-reject');
+
+    var BEFORE = [
+      { k: 'goal', t: 'Draft an LGD model for a retail mortgage portfolio.' },
+      { k: 'plan', t: 'Profile the data → shortlist risk drivers → fit and validate → document.' },
+      { k: 'tool', code: 'profile_data(portfolio)', t: '42 fields read. 3 have more than 20% missing values and are flagged for review.' },
+      { k: 'tool', code: 'rank_drivers(target="LGD")', t: 'Top candidates: loan-to-value, time in default, collateral type, region.' },
+      { k: 'check', t: 'Loan-to-value and collateral value are highly correlated. Keeping loan-to-value only.' },
+      { k: 'human', t: 'Driver shortlist ready. Waiting for an analyst to approve it.' }
+    ];
+    var REVISIONS = [
+      [
+        { k: 'human', t: 'Sent back: add cure rate as a candidate driver before fitting.' },
+        { k: 'tool', code: 'rank_drivers(target="LGD", include=["cure_rate"])', t: 'Cure rate added. Shortlist updated.' },
+        { k: 'human', t: 'Revised shortlist ready. Waiting for approval.' }
+      ],
+      [
+        { k: 'human', t: 'Sent back: region has too few defaults in some areas, drop it.' },
+        { k: 'tool', code: 'rank_drivers(target="LGD", exclude=["region"])', t: 'Region removed. Shortlist updated.' },
+        { k: 'human', t: 'Revised shortlist ready. Waiting for approval.' }
+      ]
+    ];
+    var AFTER = [
+      { k: 'tool', code: 'fit_model(drivers)', t: 'Model fitted on the development sample.' },
+      { k: 'check', code: 'validate(holdout)', t: 'Performance on the hold-out sample within the agreed range. Stability checks passed.' },
+      { k: 'tool', code: 'write_docs()', t: 'Methodology note drafted: data, drivers, validation, limitations.' },
+      { k: 'done', t: 'Draft ready. Final modelling decisions stay with the team.' }
+    ];
+
+    var token = 0, revCount = 0;
+
+    function setStatus(txt, cls) {
+      status.textContent = txt;
+      status.className = 'console__status' + (cls ? ' ' + cls : '');
+    }
+    function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+    function addStep(s, my) {
+      var li = document.createElement('li');
+      li.className = 'step step--' + s.k;
+      var kind = document.createElement('span');
+      kind.className = 'step__kind';
+      kind.textContent = s.k;
+      var body = document.createElement('span');
+      body.className = 'step__body';
+      li.appendChild(kind); li.appendChild(body);
+      log.appendChild(li);
+
+      var p = Promise.resolve();
+      var textEl = body;
+      if (s.code) {
+        var code = document.createElement('code');
+        code.textContent = s.code;
+        body.appendChild(code);
+        textEl = document.createElement('span');
+        textEl.className = 'step__out';
+        body.appendChild(textEl);
+        p = sleep(reduceMotion ? 0 : 450);
+      }
+      return p.then(function () { return type(textEl, s.t, my); });
+    }
+
+    function type(el, text, my) {
+      if (reduceMotion) { el.textContent = text; return Promise.resolve(); }
+      var caret = document.createElement('i');
+      caret.className = 'caret';
+      el.appendChild(caret);
+      var i = 0;
+      return new Promise(function (res) {
+        (function next() {
+          if (my !== token) return res();
+          i = Math.min(text.length, i + 2);
+          el.textContent = text.slice(0, i);
+          el.appendChild(caret);
+          if (i < text.length) setTimeout(next, 14);
+          else { caret.remove(); res(); }
+        })();
+      });
+    }
+
+    function play(steps, my) {
+      var chain = Promise.resolve();
+      steps.forEach(function (s) {
+        chain = chain.then(function () {
+          if (my !== token) return;
+          return addStep(s, my).then(function () { return sleep(reduceMotion ? 0 : 420); });
+        });
+      });
+      return chain;
+    }
+
+    function waitForHuman(my) {
+      setStatus('waiting for you', 'is-waiting');
+      okBtn.hidden = false; backBtn.hidden = false;
+      runBtn.hidden = true;
+      return new Promise(function (res) {
+        function clean(v) {
+          okBtn.onclick = backBtn.onclick = null;
+          okBtn.hidden = true; backBtn.hidden = true;
+          setStatus('running', 'is-running');
+          res(v);
+        }
+        okBtn.onclick = function () { if (my === token) clean('ok'); };
+        backBtn.onclick = function () { if (my === token) clean('back'); };
+      });
+    }
+
+    function run() {
+      var my = ++token;
+      revCount = 0;
+      log.innerHTML = '';
+      runBtn.hidden = true;
+      setStatus('running', 'is-running');
+      play(BEFORE, my)
+        .then(function loop() {
+          if (my !== token) return;
+          return waitForHuman(my).then(function (v) {
+            if (v === 'back') {
+              var rev = REVISIONS[revCount++ % REVISIONS.length];
+              return play(rev, my).then(loop);
+            }
+            return addStep({ k: 'human', t: 'Approved by analyst.' }, my);
+          });
+        })
+        .then(function () { if (my === token) return play(AFTER, my); })
+        .then(function () {
+          if (my !== token) return;
+          setStatus('done', 'is-done');
+          runBtn.textContent = 'Run again';
+          runBtn.hidden = false;
+        });
+    }
+
+    log.innerHTML = '<li class="console__empty">Press run to watch the agent plan, use its tools and ask for approval.</li>';
+    runBtn.addEventListener('click', run);
   })();
 
   /* =========================================================
@@ -351,7 +453,7 @@
         ctx.fillStyle = 'rgba(94,71,53,0.75)';
         ctx.font = 'italic ' + Math.round(22 * dpr) + 'px "Cormorant Garamond", Georgia, serif';
         ctx.textAlign = 'center';
-        ctx.fillText(root.lang === 'es' ? 'Un lienzo en blanco. Pon el primer punto.' : 'A blank page. Place the first point.', FW / 2, FH / 2);
+        ctx.fillText('A blank page. Place the first point.', FW / 2, FH / 2);
       }
     }
 
@@ -423,7 +525,6 @@
         stats(); drawNet();
       });
     });
-    $$('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { dirty = true; }); });
 
     /* ---- loop (only while visible) ---- */
     var visible = false, dirty = true, frame = 0, calm = 0;
