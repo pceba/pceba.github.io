@@ -6,8 +6,8 @@ Plain HTML, CSS and a few lines of JavaScript. No build step, no dependencies.
 
 ```
 index.html      page content
-styles.css      design tokens, layout, light/dark themes
-main.js         theme toggle, active nav, fade-in
+styles.css      palette, typography, layout
+main.js         neural-network playground, scroll timeline, clocks, ES/EN
 assets/img/     optimised photos
 ```
 
