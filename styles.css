@@ -10,6 +10,7 @@
   --ink: #3b2a1f;
   --ink-2: #5e4735;
   --muted: #8d7560;
+  --tan: #a68566;
   --terra: #b0603a;
   --olive: #6d7446;
 
@@ -58,7 +59,8 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 em { font-style: italic; }
-strong { font-weight: 500; color: var(--ink); }
+strong { font-weight: 600; color: var(--ink); }
+.tan { color: var(--tan); }
 ::selection { background: var(--terra); color: var(--paper); }
 :focus-visible { outline: 1px solid var(--terra); outline-offset: 4px; }
 
@@ -399,6 +401,7 @@ strong { font-weight: 500; color: var(--ink); }
 }
 .extras dt { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
 .extras dd { color: var(--ink-2); }
+.chips--flush { margin-top: 0; }
 
 .contact__sub { margin-top: 22px; font-style: italic; color: var(--ink-2); font-size: 1.15rem; }
 
