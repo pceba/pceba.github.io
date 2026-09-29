@@ -27,8 +27,6 @@
     <a href="#top" class="nav__mark">Pablo Ceballos <i>Arenas</i></a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#outlook">About</a>
-      <a href="#agent">Agents</a>
-      <a href="#lab">Lab</a>
       <a href="#work">Work</a>
       <a href="#club">Club</a>
       <a href="#study">Study</a>
@@ -84,84 +82,10 @@
       </div>
     </section>
 
-    <!-- ================= AGENT DEMO ================= -->
-    <section class="agent" id="agent">
-      <header class="section-head reveal">
-        <p class="label">II.</p>
-        <h2>What an agent <em>actually does</em></h2>
-        <p class="section-intro">
-          A simplified walk-through of an agent drafting a credit risk model, loosely based on the kind of tool I built at Oliver Wyman. The steps are illustrative and contain no client data. Note where it stops and waits for a person.
-        </p>
-      </header>
-
-      <div class="console reveal" id="console">
-        <div class="console__bar">
-          <span class="console__title">lgd-draft agent</span>
-          <span class="console__status" id="agent-status">idle</span>
-        </div>
-        <ol class="console__log" id="agent-log" aria-live="polite"></ol>
-        <div class="console__actions">
-          <button type="button" class="btn-ink" id="agent-run">Run the agent</button>
-          <button type="button" class="btn-ink btn-ink--approve" id="agent-approve" hidden>Approve and continue</button>
-          <button type="button" class="btn-line" id="agent-reject" hidden>Send back</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= LAB (live neural net) ================= -->
-    <section class="machine" id="lab">
-      <header class="section-head reveal">
-        <p class="label">III.</p>
-        <h2>Machine learning, <em>up close</em></h2>
-        <p class="section-intro">
-          Underneath every agent there's a model that learned from examples. This is a small neural network trained live in your browser: place points of two colours and watch it learn a boundary between them. It's the same principle at toy scale.
-        </p>
-      </header>
-
-      <div class="lab reveal">
-        <div class="lab__stage">
-          <canvas id="field" aria-label="Interactive neural network playground"></canvas>
-          <p class="lab__tip">Click to place a point, right-click for the other colour</p>
-        </div>
-
-        <aside class="lab__side">
-          <div class="lab__group">
-            <p class="lab__label">Class</p>
-            <div class="swatches">
-              <button type="button" class="swatch is-on" data-cls="1"><i class="dot dot--a"></i>Terracotta</button>
-              <button type="button" class="swatch" data-cls="0"><i class="dot dot--b"></i>Olive</button>
-            </div>
-          </div>
-
-          <div class="lab__group">
-            <p class="lab__label">Datasets</p>
-            <div class="presets">
-              <button type="button" data-preset="circle">Circle</button>
-              <button type="button" data-preset="xor">XOR</button>
-              <button type="button" data-preset="spiral">Spiral</button>
-              <button type="button" data-preset="clear">Clear</button>
-            </div>
-          </div>
-
-          <div class="lab__group">
-            <p class="lab__label">Weights, live</p>
-            <canvas id="net" aria-hidden="true"></canvas>
-            <p class="lab__arch">2 &rarr; 12 &rarr; 12 &rarr; 1, tanh, Adam</p>
-          </div>
-
-          <dl class="lab__stats">
-            <div><dt>steps</dt><dd id="stat-steps">0</dd></div>
-            <div><dt>loss</dt><dd id="stat-loss">-</dd></div>
-            <div><dt>points</dt><dd id="stat-points">0</dd></div>
-          </dl>
-        </aside>
-      </div>
-    </section>
-
     <!-- ================= WORK ================= -->
     <section class="work" id="work">
       <header class="section-head reveal">
-        <p class="label">IV.</p>
+        <p class="label">II.</p>
         <h2>Work</h2>
       </header>
 
@@ -231,7 +155,7 @@
     <!-- ================= CLUB ================= -->
     <section class="club" id="club">
       <header class="section-head reveal">
-        <p class="label">V.</p>
+        <p class="label">III.</p>
         <h2>CUNEF <em>Consulting Club</em></h2>
       </header>
 
@@ -268,7 +192,7 @@
     <!-- ================= STUDY ================= -->
     <section class="places" id="study">
       <header class="section-head reveal">
-        <p class="label">VI.</p>
+        <p class="label">IV.</p>
         <h2>Study, <em>in three time zones</em></h2>
       </header>
 
@@ -317,7 +241,7 @@
 
     <!-- ================= CONTACT ================= -->
     <section class="contact" id="contact">
-      <p class="label reveal">VII.</p>
+      <p class="label reveal">V.</p>
       <h2 class="reveal">Let's <em>talk</em>.</h2>
       <p class="contact__sub reveal">Always happy to talk about agentic AI, machine learning or consulting.</p>
       <a class="contact__mail reveal" href="mailto:pablo.ceballos.a@gmail.com">pablo.ceballos.a@gmail.com</a>
