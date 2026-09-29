@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pablo Ceballos Arenas</title>
-  <meta name="description" content="Pablo Ceballos Arenas — Computer Science & Business at CUNEF. Agentic AI, machine learning, and how organisations put them to use.">
+  <meta name="description" content="Pablo Ceballos Arenas, Computer Science & Business at CUNEF. Agentic AI, machine learning, and how organisations put them to use.">
   <meta name="author" content="Pablo Ceballos Arenas">
   <meta name="theme-color" content="#f2e9da">
 
@@ -24,9 +24,9 @@
 <body>
 
   <header class="nav">
-    <a href="#top" class="nav__mark" aria-label="Top">P<i>c</i>A</a>
+    <a href="#top" class="nav__mark">Pablo Ceballos <i>Arenas</i></a>
     <nav class="nav__links" aria-label="Sections">
-      <a href="#outlook">Outlook</a>
+      <a href="#outlook">About</a>
       <a href="#agent">Agents</a>
       <a href="#lab">Lab</a>
       <a href="#work">Work</a>
@@ -41,16 +41,16 @@
     <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="hero__text">
-        <p class="kicker rise" style="--d:0">Madrid &middot; currently in Singapore</p>
+        <p class="kicker rise" style="--d:0">Madrid, currently in Singapore</p>
         <h1 class="hero__name">
           <span class="rise" style="--d:1">Pablo</span>
           <span class="rise" style="--d:2">Ceballos <em>Arenas</em></span>
         </h1>
         <p class="hero__line rise" style="--d:3">
-          I work on machine learning and agentic AI, and on the less obvious question of how organisations actually put them to use.
+          Bridging the gap between business and technology.
         </p>
         <p class="hero__body rise" style="--d:4">
-          Computer Science and Business Administration at CUNEF. Data &amp; Analytics intern at Oliver Wyman, previously Kearney. This semester on exchange at Singapore Management University.
+          Computer Science and Business Administration student at CUNEF, interested in data, machine learning and AI. Most recently in Data &amp; Analytics at Oliver Wyman, before that at Kearney. This semester on exchange at Singapore Management University.
         </p>
         <a href="#outlook" class="scroll-cue rise" style="--d:5">
           Read on
@@ -58,41 +58,30 @@
         </a>
       </div>
 
-      <figure class="portrait rise" style="--d:2">
-        <div class="portrait__arch">
-          <img class="portrait__warm" src="assets/img/portrait-warm.jpg" alt="Pablo Ceballos Arenas" width="900" height="1004">
-          <img class="portrait__color" src="assets/img/portrait.jpg" alt="" aria-hidden="true" width="900" height="1004">
+      <figure class="neuron rise" style="--d:2">
+        <svg class="neuron__net" id="neuron-net" viewBox="0 0 520 480" aria-hidden="true"></svg>
+        <div class="neuron__face">
+          <img class="neuron__warm" src="assets/img/portrait-warm.jpg" alt="Pablo Ceballos Arenas" width="900" height="1004">
+          <img class="neuron__color" src="assets/img/portrait.jpg" alt="" aria-hidden="true" width="900" height="1004">
         </div>
       </figure>
     </section>
 
-    <!-- ================= OUTLOOK ================= -->
+    <!-- ================= ABOUT ================= -->
     <section class="outlook" id="outlook">
       <header class="section-head reveal">
         <p class="label">I.</p>
-        <h2>Where I think <em>this is going</em></h2>
-        <p class="section-intro">
-          Models are moving from answering questions to carrying out work: planning a task, using tools, checking the result. I spent this summer building one of these systems for credit risk. A few things I took away from it.
-        </p>
+        <h2>Between business <em>and technology</em></h2>
       </header>
 
-      <ol class="theses">
-        <li class="thesis reveal">
-          <span class="thesis__num">01</span>
-          <h3>From answers to actions</h3>
-          <p>The shift isn't a smarter chatbot. It's software that can take a goal, break it into steps and execute them. The hard question stops being <em>can the model do it</em> and becomes <em>can we trust it to</em>.</p>
-        </li>
-        <li class="thesis reveal">
-          <span class="thesis__num">02</span>
-          <h3>The model is the easy part</h3>
-          <p>In a bank, most of the effort goes into data quality, governance and validation. An agent is only as useful as the data it reads and the controls around what it does.</p>
-        </li>
-        <li class="thesis reveal">
-          <span class="thesis__num">03</span>
-          <h3>Experts stay in the loop</h3>
-          <p>The most useful agents I can picture make a specialist faster rather than replacing them: they do the repetitive groundwork and leave the judgement calls to a person.</p>
-        </li>
-      </ol>
+      <div class="bridge reveal">
+        <p class="bridge__lead">Data, machine learning and AI are going to change what a normal working day looks like in most companies.</p>
+        <div class="bridge__text">
+          <p>I study Computer Science and Business Administration at the same time, and the part I enjoy most is the space between them: understanding what a business actually needs, and knowing enough about the technology to build it.</p>
+          <p>In Data &amp; Analytics at Oliver Wyman I saw a small version of what is coming. We built an AI tool that takes over the repetitive groundwork of creating a risk model, so the team can spend its time on judgement. I think a lot of knowledge work will move in that direction: less time gathering and cleaning information, more time deciding what to do with it.</p>
+          <p>The organisations that get the most out of this will be the ones with people who understand both sides. That is the kind of role I am working towards.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ================= AGENT DEMO ================= -->
@@ -107,7 +96,7 @@
 
       <div class="console reveal" id="console">
         <div class="console__bar">
-          <span class="console__title">agent &middot; lgd-draft</span>
+          <span class="console__title">lgd-draft agent</span>
           <span class="console__status" id="agent-status">idle</span>
         </div>
         <ol class="console__log" id="agent-log" aria-live="polite"></ol>
@@ -132,7 +121,7 @@
       <div class="lab reveal">
         <div class="lab__stage">
           <canvas id="field" aria-label="Interactive neural network playground"></canvas>
-          <p class="lab__tip">Click to place a point &middot; right-click for the other colour</p>
+          <p class="lab__tip">Click to place a point, right-click for the other colour</p>
         </div>
 
         <aside class="lab__side">
@@ -157,12 +146,12 @@
           <div class="lab__group">
             <p class="lab__label">Weights, live</p>
             <canvas id="net" aria-hidden="true"></canvas>
-            <p class="lab__arch">2 &rarr; 12 &rarr; 12 &rarr; 1 &middot; tanh &middot; Adam</p>
+            <p class="lab__arch">2 &rarr; 12 &rarr; 12 &rarr; 1, tanh, Adam</p>
           </div>
 
           <dl class="lab__stats">
             <div><dt>steps</dt><dd id="stat-steps">0</dd></div>
-            <div><dt>loss</dt><dd id="stat-loss">&mdash;</dd></div>
+            <div><dt>loss</dt><dd id="stat-loss">-</dd></div>
             <div><dt>points</dt><dd id="stat-points">0</dd></div>
           </dl>
         </aside>
@@ -181,6 +170,10 @@
           <span class="chapter__when">Jun &ndash; Jul 2026</span>
           <h3>Oliver Wyman</h3>
           <span class="chapter__role">Data &amp; Analytics Consulting Intern</span>
+          <div class="tile tile--logo" data-tilt>
+            <img src="assets/logos/oliver-wyman.svg" alt="Oliver Wyman logo" loading="lazy">
+            <span class="tile__glare" aria-hidden="true"></span>
+          </div>
         </div>
         <div class="chapter__text">
           <p class="lead">An agentic AI tool for building LGD models.</p>
@@ -195,6 +188,10 @@
           <span class="chapter__when">Jun &ndash; Jul 2025</span>
           <h3>Kearney</h3>
           <span class="chapter__role">Business Analyst Intern</span>
+          <div class="tile tile--logo" data-tilt>
+            <img src="assets/logos/kearney.svg" alt="Kearney logo" loading="lazy">
+            <span class="tile__glare" aria-hidden="true"></span>
+          </div>
         </div>
         <div class="chapter__text">
           <p class="lead">Go-to-market for a freight operator's own software.</p>
@@ -210,14 +207,14 @@
             <a href="https://github.com/pceba/Credit-Approval-Prediction" target="_blank" rel="noopener">
               <span class="sp__title">Credit Approval Prediction</span>
               <span class="sp__desc">Classification model predicting whether a credit application is approved.</span>
-              <span class="sp__tag">Python &middot; ML &nearr;</span>
+              <span class="sp__tag">Python, ML &nearr;</span>
             </a>
           </li>
           <li>
             <a href="https://github.com/pceba/Planetarian-Exploration-Simulation" target="_blank" rel="noopener">
               <span class="sp__title">Planetary Exploration</span>
               <span class="sp__desc">Discrete-event simulation of a fleet of autonomous robots.</span>
-              <span class="sp__tag">Python &middot; Simulation &nearr;</span>
+              <span class="sp__tag">Python, Simulation &nearr;</span>
             </a>
           </li>
           <li>
@@ -277,21 +274,36 @@
 
       <div class="cities">
         <article class="city reveal" data-tz="Europe/Madrid">
+          <div class="tile tile--photo" data-tilt>
+            <img class="tile__img" src="assets/img/campus-cunef.jpg" alt="CUNEF campus in Madrid" loading="lazy">
+            <span class="tile__badge tile__badge--flush"><img src="assets/logos/cunef.png" alt="" loading="lazy"></span>
+            <span class="tile__glare" aria-hidden="true"></span>
+          </div>
           <p class="city__time"><span class="t">--:--</span></p>
           <h3>Madrid</h3>
-          <p class="city__coord">CUNEF &middot; 2022 &ndash; 2027</p>
+          <p class="city__coord">CUNEF, 2022 to 2027</p>
           <p>Double degree in Computer Science and Business Administration. First Class Honours; top 1% in Machine Learning and Digital Entrepreneurship, top 3% in AI, Neural Networks &amp; Deep Learning, and Cybersecurity.</p>
         </article>
         <article class="city reveal" data-tz="Europe/Berlin">
+          <div class="tile tile--photo" data-tilt>
+            <img class="tile__img" src="assets/img/campus-cologne.jpg" alt="Cologne Cathedral and the Hohenzollern Bridge" loading="lazy">
+            <span class="tile__badge"><img src="assets/logos/cbs.png" alt="" loading="lazy"></span>
+            <span class="tile__glare" aria-hidden="true"></span>
+          </div>
           <p class="city__time"><span class="t">--:--</span></p>
           <h3>Cologne</h3>
-          <p class="city__coord">CBS International Business School &middot; 2024</p>
+          <p class="city__coord">CBS International Business School, 2024</p>
           <p>Exchange semester. Management Consulting, Financial Analysis and Operations Management; academic score 91/100.</p>
         </article>
         <article class="city city--now reveal" data-tz="Asia/Singapore">
+          <div class="tile tile--photo" data-tilt>
+            <img class="tile__img" src="assets/img/campus-smu.jpg" alt="Singapore Management University campus" loading="lazy">
+            <span class="tile__badge tile__badge--mark"><img src="assets/logos/smu.png" alt="" loading="lazy"></span>
+            <span class="tile__glare" aria-hidden="true"></span>
+          </div>
           <p class="city__time"><span class="t">--:--</span><span class="city__now">now</span></p>
           <h3>Singapore</h3>
-          <p class="city__coord">Singapore Management University &middot; 2026</p>
+          <p class="city__coord">Singapore Management University, 2026</p>
           <p>Exchange semester. Financial Analytics, Data Analytics, and Service Processes &amp; Digital Business.</p>
         </article>
       </div>
@@ -299,7 +311,7 @@
       <dl class="extras reveal">
         <div><dt>Languages</dt><dd>Spanish (native), English (C2, IELTS Academic 8.0)</dd></div>
         <div><dt>Technical</dt><dd>Python, SQL, R, C++, Git, Microsoft Office</dd></div>
-        <div><dt>Also</dt><dd>Basketball team captain for four seasons &middot; EvAU tutor in maths, physics, chemistry and English &middot; Volunteer with elderly residents in nursing homes</dd></div>
+        <div><dt>Also</dt><dd>Basketball team captain for four seasons. EvAU tutor in maths, physics, chemistry and English. Volunteer with elderly residents in nursing homes.</dd></div>
       </dl>
     </section>
 
@@ -317,8 +329,17 @@
   </main>
 
   <footer class="foot">
-    <span>&copy; <span id="year">2026</span> Pablo Ceballos Arenas</span>
-    <span>Madrid &middot; Singapore</span>
+    <div class="foot__row">
+      <span>&copy; <span id="year">2026</span> Pablo Ceballos Arenas</span>
+      <span>Madrid and Singapore</span>
+    </div>
+    <p class="foot__credits">
+      Campus photos via Wikimedia Commons:
+      <a href="https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Colegio_Universitario_de_Estudios_Financieros_(CUNEF)_1.jpg" target="_blank" rel="noopener">Zarateman</a> (CC0),
+      <a href="https://commons.wikimedia.org/wiki/File:Cologne_Cathedral_and_Hohenzollern_Bridge_at_blue_hour.jpg" target="_blank" rel="noopener">Sandeepdattaraju</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>),
+      <a href="https://commons.wikimedia.org/wiki/File:SMU_Admin_Building.jpg" target="_blank" rel="noopener">Hong Huazheng</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>).
+      Logos are trademarks of their respective owners.
+    </p>
   </footer>
 
   <dialog class="lightbox" id="lightbox">

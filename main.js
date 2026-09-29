@@ -95,6 +95,94 @@
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   })();
 
+  /* ---------------- Portrait as a neuron ---------------- */
+  (function neuron() {
+    var svg = document.getElementById('neuron-net');
+    if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var C = { x: 300, y: 240 }, R = 150;
+    var L1 = [120, 180, 240, 300, 360].map(function (y) { return { x: 26, y: y }; });
+    var L2 = [150, 210, 270, 330].map(function (y) { return { x: 96, y: y }; });
+    var OUT = [190, 290].map(function (y) { return { x: 498, y: y }; });
+
+    function el(name, attrs, parent) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      (parent || svg).appendChild(n);
+      return n;
+    }
+    function onRim(p, pad) {
+      var dx = p.x - C.x, dy = p.y - C.y, d = Math.sqrt(dx * dx + dy * dy);
+      return { x: C.x + dx / d * (R + (pad || 0)), y: C.y + dy / d * (R + (pad || 0)) };
+    }
+
+    var edges = [];
+    var gEdges = el('g', {});
+    L1.forEach(function (a) {
+      L2.forEach(function (b) {
+        el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge' }, gEdges);
+        edges.push({ a: a, b: b, stage: 0 });
+      });
+    });
+    L2.forEach(function (a) {
+      var b = onRim(a);
+      el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge edge--face' }, gEdges);
+      edges.push({ a: a, b: b, stage: 1 });
+    });
+    OUT.forEach(function (b) {
+      var a = onRim(b);
+      el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge edge--face' }, gEdges);
+      edges.push({ a: a, b: b, stage: 2 });
+    });
+
+    el('circle', { cx: C.x, cy: C.y, r: R + 14, 'class': 'ring' });
+    L1.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 5, 'class': 'node' }); });
+    L2.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 6, 'class': 'node' }); });
+    OUT.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 6, 'class': 'node' }); });
+
+    if (reduceMotion) return;
+
+    // Signals travel forward: inputs -> hidden -> the portrait -> outputs.
+    var gPulse = el('g', {});
+    var cycle = 3.6;
+    function pick(stage) { var e = edges.filter(function (x) { return x.stage === stage; }); return e[Math.floor(Math.random() * e.length)]; }
+    for (var i = 0; i < 9; i++) {
+      var stage = i % 3, e = pick(stage);
+      var c = el('circle', { r: 2.6, 'class': 'pulse', opacity: 0 }, gPulse);
+      var begin = (stage * 1.1 + Math.random() * 0.6 + Math.floor(i / 3) * 1.2).toFixed(2) + 's';
+      el('animateMotion', {
+        path: 'M' + e.a.x + ' ' + e.a.y + ' L' + e.b.x + ' ' + e.b.y,
+        dur: '1.1s', begin: begin, repeatCount: 'indefinite', calcMode: 'spline',
+        keyTimes: '0;1', keySplines: '.4 0 .2 1'
+      }, c);
+      el('animate', {
+        attributeName: 'opacity', values: '0;1;1;0', keyTimes: '0;.15;.8;1',
+        dur: '1.1s', begin: begin, repeatCount: 'indefinite'
+      }, c);
+    }
+  })();
+
+  /* ---------------- Tilt for logo and photo tiles ---------------- */
+  (function tilt() {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    $$('[data-tilt]').forEach(function (t) {
+      t.addEventListener('pointermove', function (e) {
+        var r = t.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        t.classList.add('is-tilting');
+        t.style.setProperty('--ry', ((px - 0.5) * 10).toFixed(2) + 'deg');
+        t.style.setProperty('--rx', ((0.5 - py) * 8).toFixed(2) + 'deg');
+        t.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        t.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      });
+      t.addEventListener('pointerleave', function () {
+        t.classList.remove('is-tilting');
+        t.style.setProperty('--rx', '0deg');
+        t.style.setProperty('--ry', '0deg');
+      });
+    });
+  })();
+
   /* =========================================================
      Agent walk-through (illustrative, no real data)
      ========================================================= */
@@ -496,7 +584,7 @@
     var steps = 0, lastLoss = null;
     function stats() {
       stSteps.textContent = steps.toLocaleString('en-US');
-      stLoss.textContent = lastLoss == null ? '—' : lastLoss.toFixed(3);
+      stLoss.textContent = lastLoss == null ? '-' : lastLoss.toFixed(3);
       stPts.textContent = points.length;
     }
 
