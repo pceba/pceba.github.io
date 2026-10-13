@@ -1,15 +1,69 @@
 (function () {
   'use strict';
 
+  var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  if (hasIO && !reduceMotion) root.classList.add('js');
 
   function $(s, el) { return (el || document).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
 
   $('#year').textContent = new Date().getFullYear();
 
-  /* ---------------- Active nav link ---------------- */
-  if ('IntersectionObserver' in window) {
+  /* ---------------- Scroll progress under the nav ---------------- */
+  var bar = $('.nav__progress');
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1).toFixed(4) : 0);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---------------- Count-up ---------------- */
+  function countUp(el) {
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var to = +el.getAttribute('data-count');
+    if (reduceMotion) { el.textContent = to; return; }
+    var t0 = performance.now(), dur = to > 20 ? 1600 : 900;
+    (function step(t) {
+      var p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* ---------------- Road to graduation ---------------- */
+  var roadDone = false;
+  function road() {
+    if (roadDone) return;
+    roadDone = true;
+    var start = new Date('2022-09-01').getTime(), end = new Date('2027-05-31').getTime();
+    var pct = Math.round(Math.max(0, Math.min(1, (Date.now() - start) / (end - start))) * 100);
+    $('#road-fill').style.width = pct + '%';
+    var out = $('#road-pct');
+    if (reduceMotion) { out.textContent = pct; return; }
+    out.setAttribute('data-count', pct);
+    countUp(out);
+  }
+
+  /* ---------------- Reveal, counters, timeline ---------------- */
+  if (hasIO) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var t = e.target;
+        seen.unobserve(t);
+        if (t.hasAttribute('data-count')) countUp(t);
+        else if (t.id === 'road') road();
+        else t.classList.add('in');
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    $$('.reveal, #path, [data-count], #road').forEach(function (el) { seen.observe(el); });
+
+    /* Active nav link */
     var links = {};
     $$('.nav__links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
     var spy = new IntersectionObserver(function (entries) {
@@ -20,7 +74,49 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     $$('main section[id]').forEach(function (s) { spy.observe(s); });
+  } else {
+    $$('.reveal, #path').forEach(function (el) { el.classList.add('in'); });
+    road();
   }
+
+  /* ---------------- Local time in each city ---------------- */
+  (function clocks() {
+    var cities = $$('.city[data-tz]');
+    function tick() {
+      var now = new Date();
+      cities.forEach(function (c) {
+        var parts;
+        try {
+          parts = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: c.getAttribute('data-tz')
+          }).format(now).split(':');
+        } catch (e) { return; }
+        $('.t', c).innerHTML = parts[0] + '<span class="colon">:</span>' + parts[1];
+      });
+    }
+    tick();
+    setInterval(tick, 15000);
+  })();
+
+  /* ---------------- Copy email ---------------- */
+  (function copyMail() {
+    var btn = $('#copy-mail');
+    if (!btn) return;
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var mail = btn.getAttribute('data-mail');
+      function done(text) {
+        btn.textContent = text;
+        btn.classList.add('is-done');
+        setTimeout(function () { btn.textContent = label; btn.classList.remove('is-done'); }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mail).then(function () { done('Copied'); }, function () { done(mail); });
+      } else {
+        done(mail);
+      }
+    });
+  })();
 
   /* ---------------- Lightbox ---------------- */
   (function lightbox() {

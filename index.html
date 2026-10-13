@@ -19,56 +19,156 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261013d">
+  <link rel="stylesheet" href="styles.css?v=20261013e">
 </head>
 <body>
 
   <header class="nav">
     <div class="nav__inner">
-      <a href="#top" class="nav__mark">Pablo Ceballos Arenas</a>
+      <a href="#top" class="nav__mark"><span class="nav__dot" aria-hidden="true"></span>Pablo Ceballos Arenas</a>
       <nav class="nav__links" aria-label="Sections">
         <a href="#about">About</a>
+        <a href="#now">Now</a>
         <a href="#work">Work</a>
         <a href="#club">Club</a>
         <a href="#education">Education</a>
       </nav>
       <a class="btn btn--primary btn--sm nav__cta" href="#contact">Contact</a>
     </div>
+    <span class="nav__progress" aria-hidden="true"></span>
   </header>
 
   <main id="top" class="page">
 
-    <!-- Intro -->
-    <section class="intro">
-      <figure class="card portrait">
-        <img src="assets/img/portrait.jpg" alt="Pablo Ceballos Arenas" width="900" height="1004">
-      </figure>
-      <div class="card intro__main">
-        <div class="intro__text">
-          <p class="meta">Madrid, currently in Singapore</p>
+    <!-- ================= HERO ================= -->
+    <section class="card hero">
+      <div class="hero__main">
+        <figure class="avatar">
+          <svg class="avatar__orbit" viewBox="0 0 220 220" aria-hidden="true">
+            <circle class="orbit orbit--outer" cx="110" cy="110" r="104"/>
+            <circle class="orbit orbit--inner" cx="110" cy="110" r="94"/>
+            <g class="spin spin--slow"><circle class="sat sat--accent" cx="110" cy="6" r="5"/></g>
+            <g class="spin spin--fast"><circle class="sat sat--ink" cx="110" cy="16" r="3.5"/></g>
+            <g class="spin spin--rev"><circle class="sat sat--meta" cx="214" cy="110" r="3"/></g>
+          </svg>
+          <img class="avatar__img" src="assets/img/portrait.jpg" alt="Pablo Ceballos Arenas" width="900" height="1004">
+        </figure>
+
+        <div class="hero__text">
+          <p class="status"><span class="status__dot" aria-hidden="true"></span>Madrid, currently in Singapore</p>
           <h1>Pablo Ceballos Arenas</h1>
-          <p class="secondary">Computer Science and Business Administration student at CUNEF, interested in <strong>data, machine learning and AI</strong>. Most recently in Data &amp; Analytics at Oliver Wyman, before that at Kearney. This semester on exchange at Singapore Management University.</p>
+          <p class="hero__lead">Computer Science and Business Administration student at CUNEF, interested in <strong>data, machine learning and AI</strong>.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">Contact</a>
+            <a class="btn btn--secondary" href="https://linkedin.com/in/pablo-ceballos-arenas" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+            <a class="btn btn--secondary" href="https://github.com/pceba" target="_blank" rel="noopener">GitHub &nearr;</a>
+          </div>
         </div>
+
         <svg class="net" id="neuron-net" viewBox="0 0 320 260" aria-hidden="true"></svg>
       </div>
+
+      <dl class="stats">
+        <div class="stat"><dt>Consulting internships</dt><dd><span data-count="2">2</span></dd><p>Kearney and Oliver Wyman</p></div>
+        <div class="stat"><dt>Club members</dt><dd><span data-count="400">400</span>+</dd><p>CUNEF Consulting Club</p></div>
+        <div class="stat"><dt>Countries studied in</dt><dd><span data-count="3">3</span></dd><p>Spain, Germany, Singapore</p></div>
+        <div class="stat"><dt>Graduating</dt><dd>2027</dd><p>May, double degree</p></div>
+      </dl>
     </section>
 
-    <!-- About -->
-    <section class="section" id="about">
+    <!-- ================= ABOUT ================= -->
+    <section class="section reveal" id="about">
       <h2>About me</h2>
-      <div class="card card--pad prose">
-        <p>Data, machine learning and AI are going to change what a normal working day looks like in most companies.</p>
-        <p>I study Computer Science and Business Administration at the same time, and the part I enjoy most is the space between them: <strong>understanding what a business actually needs, and knowing enough about the technology to build it.</strong></p>
-        <p>In Data &amp; Analytics at Oliver Wyman I saw a small version of what is coming. Working with AI coding agents, I built a tool that gathers the repetitive groundwork of creating a credit-risk model in one place, so <strong>the team can spend its time on judgement</strong>. I think a lot of knowledge work will move in that direction: <strong>less time gathering and cleaning information, more time deciding what to do with it.</strong></p>
-        <p>The organisations that get the most out of this will be the ones with <strong>people who understand both sides</strong>. That is the kind of role I am working towards.</p>
+      <div class="card about">
+        <p class="about__lead">Data, machine learning and AI are going to change what a normal working day looks like in most companies.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            </span>
+            <h3>Business</h3>
+            <p>Understanding what a business actually needs.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>
+            </span>
+            <h3>Technology</h3>
+            <p>Knowing enough about the technology to build it.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="1.6"/><circle cx="20" cy="5" r="1.6"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="19" r="1.6"/><path d="M5.3 6.2l4.4 3.9M18.7 6.2l-4.4 3.9M5.3 17.8l4.4-3.9M18.7 17.8l-4.4-3.9"/></svg>
+            </span>
+            <h3>AI at work</h3>
+            <p>Less time gathering and cleaning information, more time deciding what to do with it.</p>
+          </div>
+        </div>
+        <div class="about__text">
+          <p>I study Computer Science and Business Administration at the same time, and the part I enjoy most is the space between them. In Data &amp; Analytics at Oliver Wyman I saw a small version of what is coming: working with AI coding agents, I built a tool that gathers the repetitive groundwork of creating a credit-risk model in one place, so <strong>the team can spend its time on judgement</strong>.</p>
+          <p>The organisations that get the most out of this will be the ones with <strong>people who understand both sides</strong>. That is the kind of role I am working towards.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Work -->
-    <section class="section" id="work">
+    <!-- ================= NOW ================= -->
+    <section class="section reveal" id="now">
+      <h2>Now and next</h2>
+      <div class="now-grid">
+        <div class="card now">
+          <p class="eyebrow">Currently building</p>
+          <a class="project" href="https://github.com/pceba/agents-lab" target="_blank" rel="noopener">
+            <span class="project__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V3M9 12h.01M15 12h.01M9 16h6"/></svg>
+            </span>
+            <span class="project__body">
+              <span class="project__title">agents-lab <span class="arrow">&nearr;</span></span>
+              <span class="project__desc">My open workbench for learning how LLM agents are built: the model, the harness around it and the system design behind it.</span>
+            </span>
+          </a>
+          <div class="project">
+            <span class="project__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/></svg>
+            </span>
+            <span class="project__body">
+              <span class="project__title">SMU exchange</span>
+              <span class="project__desc">Financial Analytics, Data Analytics, and Service Processes and Digital Business, until December 2026.</span>
+            </span>
+          </div>
+          <div class="project">
+            <span class="project__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>
+            </span>
+            <span class="project__body">
+              <span class="project__title">Two final-year theses</span>
+              <span class="project__desc">One for each degree, from January to May 2027.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="card now">
+          <p class="eyebrow">Where I'm heading</p>
+          <p class="now__lead">By graduation, I want to design and ship AI systems end to end, and explain them to the business that uses them.</p>
+          <ul class="tags tags--focus">
+            <li>LLMs</li><li>Agentic AI</li><li>Forward Deployed Engineering</li><li>System design</li>
+          </ul>
+          <div class="road" id="road">
+            <div class="road__head">
+              <span>Road to graduation</span>
+              <span class="road__pct"><span id="road-pct">0</span>%</span>
+            </div>
+            <div class="road__bar"><span class="road__fill" id="road-fill"></span></div>
+            <div class="road__ends"><span>Sep 2022</span><span>May 2027</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="section reveal" id="work">
       <h2>Work experience</h2>
 
-      <figure class="card path">
+      <figure class="card path" id="path">
         <div class="path__scroll">
           <svg class="path__svg" viewBox="0 0 960 256" role="img" aria-labelledby="path-title path-desc">
             <title id="path-title">The path so far, 2022 to 2027</title>
@@ -98,13 +198,16 @@
             <rect class="p-work" x="696" y="126" width="28" height="4"/>
             <rect class="p-now" x="728" y="126" width="68" height="4"/>
 
-            <circle class="p-dot-study" cx="48" cy="128" r="4"/>
-            <circle class="p-dot-study" cx="422" cy="128" r="4"/>
-            <circle class="p-dot-work" cx="538" cy="128" r="4"/>
-            <circle class="p-dot-club" cx="568" cy="128" r="4"/>
-            <circle class="p-dot-work" cx="710" cy="128" r="4"/>
-            <circle class="p-dot-now" cx="762" cy="128" r="5"/>
-            <circle class="p-dot-study" cx="856" cy="128" r="4"/>
+            <g class="p-dots">
+              <circle class="p-dot-study" style="--i:0" cx="48" cy="128" r="4"/>
+              <circle class="p-dot-study" style="--i:1" cx="422" cy="128" r="4"/>
+              <circle class="p-dot-work" style="--i:2" cx="538" cy="128" r="4"/>
+              <circle class="p-dot-club" style="--i:3" cx="568" cy="128" r="4"/>
+              <circle class="p-dot-work" style="--i:4" cx="710" cy="128" r="4"/>
+              <circle class="p-dot-now" style="--i:5" cx="762" cy="128" r="5"/>
+              <circle class="p-dot-study" style="--i:6" cx="856" cy="128" r="4"/>
+            </g>
+            <circle class="p-ping" cx="762" cy="128" r="5"/>
 
             <g class="p-label">
               <text class="p-name p-start" x="48" y="68">CUNEF, Madrid</text>
@@ -135,137 +238,170 @@
         </div>
       </figure>
 
-      <div class="card list">
-        <article class="row">
-          <div class="row__head">
-            <div>
-              <h3>Oliver Wyman</h3>
-              <p class="row__sub">Data &amp; Analytics Consulting Intern &#183; Jun &ndash; Jul 2026</p>
-            </div>
-            <img class="row__logo" src="assets/logos/oliver-wyman.svg" alt="Oliver Wyman logo" loading="lazy">
+      <article class="card job">
+        <div class="job__head">
+          <span class="job__logo"><img src="assets/logos/oliver-wyman.svg" alt="Oliver Wyman logo" loading="lazy"></span>
+          <div>
+            <h3>Oliver Wyman</h3>
+            <p class="job__sub">Data &amp; Analytics Consulting Intern &#183; Jun &ndash; Jul 2026</p>
           </div>
-          <div class="row__body">
-            <p class="row__lead">An internal credit-risk modelling tool, built with AI coding agents.</p>
-            <p>I designed and built, on my own, a Streamlit tool that brings the steps of <strong>credit-risk model development into one place</strong>, from exploratory analysis and portfolio segmentation to model building and automated documentation. I used <strong>AI coding agents</strong> throughout to write it, became the go-to person for the tool, and refined it through regular reviews with principals and partners.</p>
-            <p>At the same time I worked on <strong>regulatory CCF models for a Tier-1 German bank</strong>, designing data governance controls and validating large-scale financial pipelines so the downstream risk analytics could rely on the data. Balancing both, with two engagement managers, taught me a lot about prioritising.</p>
-            <ul class="tags"><li>AI coding agents</li><li>Python</li><li>Streamlit</li><li>Data pipelines</li><li>Data governance</li><li>Credit risk</li></ul>
-          </div>
-        </article>
+        </div>
+        <p class="job__lead">An internal credit-risk modelling tool, built with AI coding agents.</p>
+        <ul class="points">
+          <li>Designed and built, on my own, a Streamlit tool that brings <strong>credit-risk model development into one place</strong>: exploratory analysis, portfolio segmentation, model building and automated documentation.</li>
+          <li>Used <strong>AI coding agents</strong> throughout to write it, became the go-to person for the tool, and refined it through regular reviews with principals and partners.</li>
+          <li>In parallel, worked on <strong>regulatory CCF models for a Tier-1 German bank</strong>: data governance controls and validation of large-scale financial pipelines, with two engagement managers.</li>
+        </ul>
+        <ul class="tags"><li>AI coding agents</li><li>Python</li><li>Streamlit</li><li>Data pipelines</li><li>Data governance</li><li>Credit risk</li></ul>
+      </article>
 
-        <article class="row">
-          <div class="row__head">
-            <div>
-              <h3>Kearney</h3>
-              <p class="row__sub">Business Analyst Intern &#183; Jun &ndash; Jul 2025</p>
-            </div>
-            <img class="row__logo" src="assets/logos/kearney.svg" alt="Kearney logo" loading="lazy">
+      <article class="card job">
+        <div class="job__head">
+          <span class="job__logo"><img src="assets/logos/kearney.svg" alt="Kearney logo" loading="lazy"></span>
+          <div>
+            <h3>Kearney</h3>
+            <p class="job__sub">Business Analyst Intern &#183; Jun &ndash; Jul 2025</p>
           </div>
-          <div class="row__body">
-            <p class="row__lead">Go-to-market for a freight operator's own software.</p>
-            <p>A pro-bono project for a road freight company building in-house SaaS for fleet planning, subcontracting and truck monitoring. I owned an independent workstream: a European freight market assessment, <strong>5+ interviews with C-suite executives</strong> on technology adoption, and a <strong>segmentation of 150+ prospective clients</strong> that shaped the product's positioning and go-to-market. It ended with a 50+ slide presentation to senior leadership.</p>
-            <ul class="tags"><li>Market analysis</li><li>Executive interviews</li><li>Excel modelling</li><li>Go-to-market</li></ul>
-          </div>
-        </article>
-      </div>
+        </div>
+        <p class="job__lead">Go-to-market for a freight operator's own software.</p>
+        <div class="figures">
+          <div><strong><span data-count="5">5</span>+</strong><span>C-suite interviews</span></div>
+          <div><strong><span data-count="150">150</span>+</strong><span>prospective clients segmented</span></div>
+          <div><strong><span data-count="50">50</span>+</strong><span>slides to senior leadership</span></div>
+        </div>
+        <ul class="points">
+          <li>A pro-bono project for a road freight company building in-house SaaS for fleet planning, subcontracting and truck monitoring.</li>
+          <li>Owned an independent workstream: a European freight market assessment, interviews on technology adoption, and a client segmentation that <strong>shaped the product's positioning and go-to-market</strong>.</li>
+        </ul>
+        <ul class="tags"><li>Market analysis</li><li>Executive interviews</li><li>Excel modelling</li><li>Go-to-market</li></ul>
+      </article>
 
       <h3 class="subhead">Projects</h3>
-      <ul class="card list">
-        <li class="row">
-          <a class="row__title" href="https://github.com/pceba/Credit-Approval-Prediction" target="_blank" rel="noopener">Credit Approval Prediction</a>
-          <p class="row__sub">Python, ML</p>
-          <p class="row__body">Classification model predicting whether a credit application is approved.</p>
-        </li>
-        <li class="row">
-          <a class="row__title" href="https://github.com/pceba/Planetarian-Exploration-Simulation" target="_blank" rel="noopener">Planetary Exploration</a>
-          <p class="row__sub">Python, Simulation</p>
-          <p class="row__body">Discrete-event simulation of a fleet of autonomous robots.</p>
-        </li>
-        <li class="row">
-          <h3>Road Safety Econometrics</h3>
-          <p class="row__sub">R</p>
-          <p class="row__body">Regression analysis of the impact of road safety policies.</p>
-        </li>
-      </ul>
+      <div class="projects">
+        <a class="card pcard" href="https://github.com/pceba/Credit-Approval-Prediction" target="_blank" rel="noopener">
+          <span class="pcard__tag">Python, ML</span>
+          <span class="pcard__title">Credit Approval Prediction <span class="arrow">&nearr;</span></span>
+          <span class="pcard__desc">Classification model predicting whether a credit application is approved.</span>
+        </a>
+        <a class="card pcard" href="https://github.com/pceba/Planetarian-Exploration-Simulation" target="_blank" rel="noopener">
+          <span class="pcard__tag">Python, Simulation</span>
+          <span class="pcard__title">Planetary Exploration <span class="arrow">&nearr;</span></span>
+          <span class="pcard__desc">Discrete-event simulation of a fleet of autonomous robots.</span>
+        </a>
+        <div class="card pcard pcard--static">
+          <span class="pcard__tag">R</span>
+          <span class="pcard__title">Road Safety Econometrics</span>
+          <span class="pcard__desc">Regression analysis of the impact of road safety policies.</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Club -->
-    <section class="section" id="club">
+    <!-- ================= CLUB ================= -->
+    <section class="section reveal" id="club">
       <h2>CUNEF Consulting Club</h2>
-      <div class="card list">
-        <div class="row">
-          <h3>400+ members since founding</h3>
-          <p class="row__sub">Founded &#183; 2025</p>
-          <p class="row__body">I <strong>founded the club and lead it as president</strong>. We organise sessions and office visits with consulting firms, run study groups for interview preparation and keep a shared library of case frameworks. I also <strong>chaired an executive panel</strong> on the consulting industry.</p>
-        </div>
-        <div class="row">
-          <div class="prints">
-            <button type="button" class="print" data-full="assets/img/club-executive-panel.jpg">
-              <img src="assets/img/club-executive-panel.jpg" alt="" loading="lazy" width="1600" height="1200">
-              <span class="print__cap">Executive panel with Bain, KPMG, DXC and Strategy&amp;</span>
-            </button>
-            <button type="button" class="print" data-full="assets/img/club-kearney-visit.jpg">
-              <img src="assets/img/club-kearney-visit.jpg" alt="" loading="lazy" width="1600" height="1200">
-              <span class="print__cap">Visit to Kearney's Madrid office</span>
-            </button>
-            <button type="button" class="print" data-full="assets/img/club-bcg.jpg">
-              <img src="assets/img/club-bcg.jpg" alt="" loading="lazy" width="1600" height="1200">
-              <span class="print__cap">Session with BCG</span>
-            </button>
-            <button type="button" class="print" data-full="assets/img/club-intro-session.jpg">
-              <img src="assets/img/club-intro-session.jpg" alt="" loading="lazy" width="1600" height="1200">
-              <span class="print__cap">Introductory session on strategy consulting</span>
-            </button>
+      <div class="card club">
+        <div class="club__intro">
+          <div class="club__count">
+            <strong><span data-count="400">400</span>+</strong>
+            <span>members since founding</span>
           </div>
+          <p>I <strong>founded the club and lead it as president</strong>. We organise sessions and office visits with consulting firms, run study groups for interview preparation and keep a shared library of case frameworks. I also <strong>chaired an executive panel</strong> on the consulting industry.</p>
+        </div>
+        <div class="prints">
+          <button type="button" class="print" data-full="assets/img/club-executive-panel.jpg">
+            <span class="print__img"><img src="assets/img/club-executive-panel.jpg" alt="" loading="lazy" width="1600" height="1200"></span>
+            <span class="print__cap">Executive panel with Bain, KPMG, DXC and Strategy&amp;</span>
+          </button>
+          <button type="button" class="print" data-full="assets/img/club-kearney-visit.jpg">
+            <span class="print__img"><img src="assets/img/club-kearney-visit.jpg" alt="" loading="lazy" width="1600" height="1200"></span>
+            <span class="print__cap">Visit to Kearney's Madrid office</span>
+          </button>
+          <button type="button" class="print" data-full="assets/img/club-bcg.jpg">
+            <span class="print__img"><img src="assets/img/club-bcg.jpg" alt="" loading="lazy" width="1600" height="1200"></span>
+            <span class="print__cap">Session with BCG</span>
+          </button>
+          <button type="button" class="print" data-full="assets/img/club-intro-session.jpg">
+            <span class="print__img"><img src="assets/img/club-intro-session.jpg" alt="" loading="lazy" width="1600" height="1200"></span>
+            <span class="print__cap">Introductory session on strategy consulting</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="section" id="education">
+    <!-- ================= EDUCATION ================= -->
+    <section class="section reveal" id="education">
       <h2>Education</h2>
-      <div class="card list">
-        <article class="row row--media">
-          <img class="row__photo" src="assets/img/campus-cunef.jpg" alt="CUNEF Almansa campus in Madrid" loading="lazy">
-          <div>
-            <h3>CUNEF Universidad</h3>
-            <p class="row__sub">Madrid &#183; Sep 2022 &ndash; May 2027</p>
-            <p class="row__body">Double degree in Computer Science and Business Administration. <strong>Top grade in my class in Machine Learning</strong> and Digital Entrepreneurship; second in Artificial Intelligence, Neural Networks and Deep Learning, and Cybersecurity.</p>
+
+      <div class="cities">
+        <article class="card city" data-tz="Europe/Madrid">
+          <div class="city__media">
+            <img class="city__img" src="assets/img/campus-cunef.jpg" alt="CUNEF Almansa campus in Madrid" loading="lazy">
+            <span class="city__badge city__badge--flush"><img src="assets/logos/cunef.png" alt="" loading="lazy"></span>
+          </div>
+          <div class="city__body">
+            <div class="city__top">
+              <span class="city__when">Sep 2022 &ndash; May 2027</span>
+              <span class="city__time"><span class="t">--:--</span></span>
+            </div>
+            <h3>Madrid</h3>
+            <p class="city__school">CUNEF Universidad</p>
+            <p class="city__text">Double degree in Computer Science and Business Administration. <strong>Top grade in my class in Machine Learning</strong> and Digital Entrepreneurship; second in Artificial Intelligence, Neural Networks and Deep Learning, and Cybersecurity.</p>
           </div>
         </article>
-        <article class="row row--media">
-          <img class="row__photo" src="assets/img/campus-cologne.jpg" alt="Cologne Cathedral and the Hohenzollern Bridge" loading="lazy">
-          <div>
-            <h3>CBS International Business School</h3>
-            <p class="row__sub">Cologne &#183; Sep &ndash; Dec 2024</p>
-            <p class="row__body">Exchange semester in Management Consulting, Financial Analysis and Operations Management, with an academic score of <strong>91/100</strong>.</p>
+
+        <article class="card city" data-tz="Europe/Berlin">
+          <div class="city__media">
+            <img class="city__img" src="assets/img/campus-cologne.jpg" alt="Cologne Cathedral and the Hohenzollern Bridge" loading="lazy">
+            <span class="city__badge"><img src="assets/logos/cbs.png" alt="" loading="lazy"></span>
+          </div>
+          <div class="city__body">
+            <div class="city__top">
+              <span class="city__when">Sep &ndash; Dec 2024</span>
+              <span class="city__time"><span class="t">--:--</span></span>
+            </div>
+            <h3>Cologne</h3>
+            <p class="city__school">CBS International Business School</p>
+            <p class="city__text">Exchange semester in Management Consulting, Financial Analysis and Operations Management, with an academic score of <strong>91/100</strong>.</p>
           </div>
         </article>
-        <article class="row row--media">
-          <img class="row__photo" src="assets/img/campus-smu.jpg" alt="Singapore Management University campus" loading="lazy">
-          <div>
-            <h3>Singapore Management University <span class="now">now</span></h3>
-            <p class="row__sub">Singapore &#183; Aug &ndash; Dec 2026</p>
-            <p class="row__body">Exchange semester in Financial Analytics, Data Analytics, and Service Processes and Digital Business.</p>
+
+        <article class="card city city--now" data-tz="Asia/Singapore">
+          <div class="city__media">
+            <img class="city__img" src="assets/img/campus-smu.jpg" alt="Singapore Management University campus" loading="lazy">
+            <span class="city__badge city__badge--mark"><img src="assets/logos/smu.png" alt="" loading="lazy"></span>
+            <span class="city__now">now</span>
+          </div>
+          <div class="city__body">
+            <div class="city__top">
+              <span class="city__when">Aug &ndash; Dec 2026</span>
+              <span class="city__time"><span class="t">--:--</span></span>
+            </div>
+            <h3>Singapore</h3>
+            <p class="city__school">Singapore Management University</p>
+            <p class="city__text">Exchange semester in Financial Analytics, Data Analytics, and Service Processes and Digital Business.</p>
           </div>
         </article>
       </div>
 
-      <dl class="card list extras">
-        <div class="row"><dt>Languages</dt><dd>Spanish (native), English (C2, IELTS Academic 8.0)</dd></div>
-        <div class="row"><dt>Programming</dt><dd><ul class="tags"><li>Python</li><li>SQL</li><li>R</li><li>C++</li><li>Bash</li></ul></dd></div>
-        <div class="row"><dt>Data science and ML</dt><dd><ul class="tags"><li>PyTorch</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>Streamlit</li></ul></dd></div>
-        <div class="row"><dt>Tools</dt><dd><ul class="tags"><li>Git</li><li>Jupyter</li><li>Relational databases</li><li>Microsoft Office</li></ul></dd></div>
-        <div class="row"><dt>Beyond work</dt><dd>Basketball team captain for four seasons. EvAU tutor in maths, physics, chemistry and English. Volunteer with elderly residents in nursing homes.</dd></div>
+      <dl class="card extras">
+        <div class="extra"><dt>Languages</dt><dd>Spanish (native), English (C2, IELTS Academic 8.0)</dd></div>
+        <div class="extra"><dt>Programming</dt><dd><ul class="tags"><li>Python</li><li>SQL</li><li>R</li><li>C++</li><li>Bash</li></ul></dd></div>
+        <div class="extra"><dt>Data science and ML</dt><dd><ul class="tags"><li>PyTorch</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>Streamlit</li></ul></dd></div>
+        <div class="extra"><dt>Tools</dt><dd><ul class="tags"><li>Git</li><li>Jupyter</li><li>Relational databases</li><li>Microsoft Office</li></ul></dd></div>
+        <div class="extra"><dt>Beyond work</dt><dd>Basketball team captain for four seasons. EvAU tutor in maths, physics, chemistry and English. Volunteer with elderly residents in nursing homes.</dd></div>
       </dl>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="card card--pad contact">
-        <p class="secondary">Happy to talk about data, AI or consulting.</p>
+    <!-- ================= CONTACT ================= -->
+    <section class="section reveal" id="contact">
+      <div class="card contact">
+        <div>
+          <h2>Contact</h2>
+          <p class="secondary">Happy to talk about data, AI or consulting.</p>
+        </div>
         <div class="contact__actions">
           <a class="btn btn--primary" href="mailto:pablo.ceballos.a@gmail.com">pablo.ceballos.a@gmail.com</a>
+          <button type="button" class="btn btn--secondary" id="copy-mail" data-mail="pablo.ceballos.a@gmail.com">Copy email</button>
           <a class="btn btn--secondary" href="https://linkedin.com/in/pablo-ceballos-arenas" target="_blank" rel="noopener">LinkedIn &nearr;</a>
           <a class="btn btn--secondary" href="https://github.com/pceba" target="_blank" rel="noopener">GitHub &nearr;</a>
         </div>
@@ -292,6 +428,6 @@
     <p id="lightbox-cap"></p>
   </dialog>
 
-  <script src="main.js?v=20261013d"></script>
+  <script src="main.js?v=20261013e"></script>
 </body>
 </html>
