@@ -52,7 +52,7 @@
         </p>
         <a href="#about" class="scroll-cue rise" style="--d:5">
           Read on
-          <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 1v19M1 14l6 6 6-6"/></svg>
+          <svg aria-hidden="true" width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 1v19M1 14l6 6 6-6"/></svg>
         </a>
       </div>
 
@@ -89,6 +89,81 @@
         <h2>Work <em>experience</em></h2>
       </header>
 
+      <figure class="path reveal">
+        <div class="path__scroll">
+          <svg class="path__svg" viewBox="0 0 960 256" role="img" aria-labelledby="path-title path-desc">
+            <title id="path-title">The path so far, 2022 to 2027</title>
+            <desc id="path-desc">Timeline from starting the CUNEF double degree in September 2022, through an exchange in Cologne, internships at Kearney and Oliver Wyman, founding the Consulting Club, and the current exchange in Singapore, to graduation in May 2027.</desc>
+
+            <!-- axis -->
+            <line class="p-axis" x1="48" y1="128" x2="912" y2="128"/>
+            <g class="p-tick">
+              <line x1="104" y1="124" x2="104" y2="132"/><line x1="280" y1="124" x2="280" y2="132"/>
+              <line x1="452" y1="124" x2="452" y2="132"/><line x1="624" y1="124" x2="624" y2="132"/>
+              <line x1="796" y1="124" x2="796" y2="132"/>
+            </g>
+            <g class="p-year">
+              <text x="104" y="152">2023</text><text x="280" y="152">2024</text>
+              <text x="452" y="152">2025</text><text x="624" y="152">2026</text>
+              <text x="796" y="152">2027</text>
+            </g>
+
+            <!-- drops -->
+            <g class="p-drop">
+              <line x1="48" y1="122" x2="48" y2="92"/><line x1="538" y1="122" x2="538" y2="92"/>
+              <line x1="710" y1="122" x2="710" y2="92"/><line x1="856" y1="122" x2="856" y2="92"/>
+              <line x1="422" y1="134" x2="422" y2="164"/><line x1="568" y1="134" x2="568" y2="164"/>
+              <line x1="762" y1="134" x2="762" y2="164"/>
+            </g>
+
+            <!-- spans (time-true) -->
+            <rect class="p-study" x="392" y="126" width="60" height="4"/>
+            <rect class="p-work" x="524" y="126" width="28" height="4"/>
+            <rect class="p-work" x="696" y="126" width="28" height="4"/>
+            <rect class="p-now" x="728" y="126" width="68" height="4"/>
+
+            <!-- markers -->
+            <circle class="p-dot-study" cx="48" cy="128" r="4"/>
+            <circle class="p-dot-study" cx="422" cy="128" r="4"/>
+            <circle class="p-dot-work" cx="538" cy="128" r="4"/>
+            <circle class="p-dot-club" cx="568" cy="128" r="4"/>
+            <circle class="p-dot-work" cx="710" cy="128" r="4"/>
+            <circle class="p-dot-now" cx="762" cy="128" r="6"/>
+            <circle class="p-dot-study" cx="856" cy="128" r="4"/>
+
+            <!-- labels above -->
+            <g class="p-label">
+              <text class="p-name p-start" x="48" y="68">CUNEF, Madrid</text>
+              <text class="p-sub p-start" x="48" y="84">Double degree &#183; 2022</text>
+              <text class="p-name" x="538" y="68">Kearney</text>
+              <text class="p-sub" x="538" y="84">BA intern &#183; 2025</text>
+              <text class="p-name" x="710" y="68">Oliver Wyman</text>
+              <text class="p-sub" x="710" y="84">D&amp;A intern &#183; 2026</text>
+              <text class="p-name" x="856" y="68">Graduation</text>
+              <text class="p-sub" x="856" y="84">May 2027</text>
+            </g>
+            <!-- labels below -->
+            <g class="p-label">
+              <text class="p-name" x="422" y="186">Cologne</text>
+              <text class="p-sub" x="422" y="202">CBS exchange &#183; 2024</text>
+              <text class="p-name" x="568" y="186">Consulting Club</text>
+              <text class="p-sub" x="568" y="202">Founded &#183; 2025</text>
+              <text class="p-name p-name--now" x="762" y="186">Singapore</text>
+              <text class="p-sub p-sub--now" x="762" y="202">SMU exchange &#183; now</text>
+            </g>
+
+            <!-- legend -->
+            <g class="p-legend">
+              <rect class="p-work" x="48" y="234" width="20" height="4"/><text x="76" y="240">Work</text>
+              <rect class="p-study" x="136" y="234" width="20" height="4"/><text x="164" y="240">Study</text>
+              <circle class="p-dot-club" cx="232" cy="236" r="4"/><text x="244" y="240">Club</text>
+              <rect class="p-now" x="304" y="234" width="20" height="4"/><text x="332" y="240">Now</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+
       <article class="chapter reveal">
         <div class="chapter__meta">
           <span class="chapter__when">Jun &ndash; Jul 2026</span>
@@ -100,10 +175,10 @@
           </div>
         </div>
         <div class="chapter__text">
-          <p class="lead">An agentic AI tool for building LGD models.</p>
-          <p>I engineered an internal AI data product in Streamlit that uses <strong>agentic AI workflows to automate the creation of LGD (loss given default) risk models</strong>, significantly reducing manual data processing time for the analytics team. I also presented it in live client demos, translating model outputs into business metrics for senior stakeholders.</p>
+          <p class="lead">An internal credit-risk modelling tool, built with AI coding agents.</p>
+          <p>I designed and built, on my own, a Streamlit tool that brings the steps of <strong>credit-risk model development into one place</strong>, from exploratory analysis and portfolio segmentation to model building and automated documentation. I used <strong>AI coding agents</strong> throughout to write it, became the go-to person for the tool, and refined it through regular reviews with principals and partners.</p>
           <p>At the same time I worked on <strong>regulatory CCF models for a Tier-1 German bank</strong>, designing data governance controls and validating large-scale financial pipelines so the downstream risk analytics could rely on the data. Balancing both, with two engagement managers, taught me a lot about prioritising.</p>
-          <ul class="chips"><li>Agentic AI</li><li>Python</li><li>Streamlit</li><li>Data pipelines</li><li>Data governance</li><li>Credit risk</li></ul>
+          <ul class="chips"><li>AI coding agents</li><li>Python</li><li>Streamlit</li><li>Data pipelines</li><li>Data governance</li><li>Credit risk</li></ul>
         </div>
       </article>
 
@@ -207,7 +282,7 @@
           <span class="city__when">Sep 2022 &ndash; May 2027</span>
           <h3>Madrid</h3>
           <p class="city__school">CUNEF Universidad</p>
-          <p>Double degree in Computer Science and Business Administration with a <strong>First Class Honours</strong> GPA. <strong>Top 1% in Machine Learning</strong> and Digital Entrepreneurship, top 3% in Artificial Intelligence, Neural Networks and Deep Learning, and Cybersecurity.</p>
+          <p>Double degree in Computer Science and Business Administration. <strong>Top grade in my class in Machine Learning</strong> and Digital Entrepreneurship; second in Artificial Intelligence, Neural Networks and Deep Learning, and Cybersecurity.</p>
         </article>
         <article class="city reveal" data-tz="Europe/Berlin">
           <div class="tile tile--photo" data-tilt>
