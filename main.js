@@ -1,22 +1,14 @@
 (function () {
   'use strict';
 
-  var root = document.documentElement;
-  root.classList.add('js');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function $(s, el) { return (el || document).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
   $('#year').textContent = new Date().getFullYear();
 
-  /* ---------------- Nav state ---------------- */
-  var nav = $('.nav');
-  function onNavScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 40); }
-  window.addEventListener('scroll', onNavScroll, { passive: true });
-  onNavScroll();
-
+  /* ---------------- Active nav link ---------------- */
   if ('IntersectionObserver' in window) {
     var links = {};
     $$('.nav__links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
@@ -28,55 +20,7 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     $$('main section[id]').forEach(function (s) { spy.observe(s); });
-
-    /* ---------------- Reveal ---------------- */
-    var rev = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('in');
-        rev.unobserve(e.target);
-        if (e.target.classList.contains('club__intro')) countUp();
-      });
-    }, { rootMargin: '0px 0px -10% 0px' });
-    $$('.reveal').forEach(function (el) { rev.observe(el); });
-  } else {
-    $$('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
-
-  /* ---------------- Count-up ---------------- */
-  var counted = false;
-  function countUp() {
-    if (counted) return;
-    counted = true;
-    var el = $('.count');
-    var to = +el.getAttribute('data-to');
-    if (reduceMotion) { el.textContent = to; return; }
-    var t0 = performance.now(), dur = 1800;
-    (function step(t) {
-      var p = clamp((t - t0) / dur, 0, 1);
-      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 4)));
-      if (p < 1) requestAnimationFrame(step);
-    })(t0);
-  }
-
-  /* ---------------- Clocks ---------------- */
-  (function clocks() {
-    var cities = $$('.city[data-tz]');
-    function tick() {
-      var now = new Date();
-      cities.forEach(function (c) {
-        var parts;
-        try {
-          parts = new Intl.DateTimeFormat('en-GB', {
-            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: c.getAttribute('data-tz')
-          }).format(now).split(':');
-        } catch (e) { return; }
-        $('.t', c).innerHTML = parts[0] + '<span class="colon">:</span>' + parts[1];
-      });
-    }
-    tick();
-    setInterval(tick, 15000);
-  })();
 
   /* ---------------- Lightbox ---------------- */
   (function lightbox() {
@@ -95,15 +39,14 @@
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   })();
 
-  /* ---------------- Portrait as a neuron ---------------- */
-  (function neuron() {
+  /* ---------------- Neural network ---------------- */
+  (function network() {
     var svg = document.getElementById('neuron-net');
     if (!svg) return;
     var NS = 'http://www.w3.org/2000/svg';
-    var C = { x: 300, y: 240 }, R = 150;
-    var L1 = [120, 180, 240, 300, 360].map(function (y) { return { x: 26, y: y }; });
-    var L2 = [150, 210, 270, 330].map(function (y) { return { x: 96, y: y }; });
-    var OUT = [190, 290].map(function (y) { return { x: 498, y: y }; });
+
+    // Four layers, signals travel left to right.
+    var COUNTS = [4, 5, 5, 2], XS = [24, 112, 208, 296], MID = 130, GAP = 44;
 
     function el(name, attrs, parent) {
       var n = document.createElementNS(NS, name);
@@ -111,76 +54,86 @@
       (parent || svg).appendChild(n);
       return n;
     }
-    function onRim(p, pad) {
-      var dx = p.x - C.x, dy = p.y - C.y, d = Math.sqrt(dx * dx + dy * dy);
-      return { x: C.x + dx / d * (R + (pad || 0)), y: C.y + dy / d * (R + (pad || 0)) };
-    }
 
+    var layers = COUNTS.map(function (n, i) {
+      var nodes = [];
+      for (var j = 0; j < n; j++) nodes.push({ x: XS[i], y: MID + (j - (n - 1) / 2) * GAP });
+      return nodes;
+    });
+
+    // edges[l][a][b] connects node a of layer l to node b of layer l + 1
+    var gEdges = el('g', {}), gNodes = el('g', {}), gPulses = el('g', {});
     var edges = [];
-    var gEdges = el('g', {});
-    L1.forEach(function (a) {
-      L2.forEach(function (b) {
-        el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge' }, gEdges);
-        edges.push({ a: a, b: b, stage: 0 });
+    for (var l = 0; l < layers.length - 1; l++) {
+      edges[l] = layers[l].map(function (a) {
+        return layers[l + 1].map(function (b) {
+          return el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge' }, gEdges);
+        });
+      });
+    }
+    layers.forEach(function (nodes, i) {
+      var last = i === layers.length - 1;
+      nodes.forEach(function (n) {
+        n.el = el('circle', { cx: n.x, cy: n.y, r: last ? 7 : 6, 'class': last ? 'node node--out' : 'node' }, gNodes);
       });
     });
-    L2.forEach(function (a) {
-      var b = onRim(a);
-      el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge edge--face' }, gEdges);
-      edges.push({ a: a, b: b, stage: 1 });
-    });
-    OUT.forEach(function (b) {
-      var a = onRim(b);
-      el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, 'class': 'edge edge--face' }, gEdges);
-      edges.push({ a: a, b: b, stage: 2 });
-    });
-
-    el('circle', { cx: C.x, cy: C.y, r: R + 14, 'class': 'ring' });
-    L1.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 5, 'class': 'node' }); });
-    L2.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 6, 'class': 'node' }); });
-    OUT.forEach(function (n) { el('circle', { cx: n.x, cy: n.y, r: 6, 'class': 'node' }); });
 
     if (reduceMotion) return;
 
-    // Signals travel forward: inputs -> hidden -> the portrait -> outputs.
-    var gPulse = el('g', {});
-    var cycle = 3.6;
-    function pick(stage) { var e = edges.filter(function (x) { return x.stage === stage; }); return e[Math.floor(Math.random() * e.length)]; }
-    for (var i = 0; i < 9; i++) {
-      var stage = i % 3, e = pick(stage);
-      var c = el('circle', { r: 2.6, 'class': 'pulse', opacity: 0 }, gPulse);
-      var begin = (stage * 1.1 + Math.random() * 0.6 + Math.floor(i / 3) * 1.2).toFixed(2) + 's';
-      el('animateMotion', {
-        path: 'M' + e.a.x + ' ' + e.a.y + ' L' + e.b.x + ' ' + e.b.y,
-        dur: '1.1s', begin: begin, repeatCount: 'indefinite', calcMode: 'spline',
-        keyTimes: '0;1', keySplines: '.4 0 .2 1'
-      }, c);
-      el('animate', {
-        attributeName: 'opacity', values: '0;1;1;0', keyTimes: '0;.15;.8;1',
-        dur: '1.1s', begin: begin, repeatCount: 'indefinite'
-      }, c);
+    function rnd(n) { return Math.floor(Math.random() * n); }
+    function flash(node) {
+      node.el.classList.add('is-hot');
+      clearTimeout(node.timer);
+      node.timer = setTimeout(function () { node.el.classList.remove('is-hot'); }, 420);
     }
-  })();
 
-  /* ---------------- Tilt for logo and photo tiles ---------------- */
-  (function tilt() {
-    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    $$('[data-tilt]').forEach(function (t) {
-      t.addEventListener('pointermove', function (e) {
-        var r = t.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        t.classList.add('is-tilting');
-        t.style.setProperty('--ry', ((px - 0.5) * 10).toFixed(2) + 'deg');
-        t.style.setProperty('--rx', ((0.5 - py) * 8).toFixed(2) + 'deg');
-        t.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
-        t.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+    var SEG = 650; // ms per edge
+    function newPath(p, now) {
+      p.route = layers.map(function (nodes) { return rnd(nodes.length); });
+      p.seg = 0;
+      p.start = now + 150 + Math.random() * 900;
+      p.started = false;
+    }
+
+    var pulses = [];
+    for (var i = 0; i < 5; i++) {
+      var p = { dot: el('circle', { r: 3, 'class': 'pulse', opacity: 0 }, gPulses) };
+      newPath(p, performance.now() + i * 450);
+      pulses.push(p);
+    }
+
+    function edgeOf(p) { return edges[p.seg][p.route[p.seg]][p.route[p.seg + 1]]; }
+
+    function frame(now) {
+      pulses.forEach(function (p) {
+        if (now < p.start) return;
+        if (!p.started) {
+          p.started = true;
+          flash(layers[0][p.route[0]]);
+          edgeOf(p).classList.add('is-live');
+        }
+        var t = Math.min((now - p.start) / SEG, 1);
+        var e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // ease in-out
+        var a = layers[p.seg][p.route[p.seg]], b = layers[p.seg + 1][p.route[p.seg + 1]];
+        p.dot.setAttribute('cx', a.x + (b.x - a.x) * e);
+        p.dot.setAttribute('cy', a.y + (b.y - a.y) * e);
+        p.dot.setAttribute('opacity', 1);
+        if (t < 1) return;
+
+        edgeOf(p).classList.remove('is-live');
+        flash(b);
+        p.seg++;
+        if (p.seg < layers.length - 1) {
+          p.start = now;
+          edgeOf(p).classList.add('is-live');
+        } else {
+          p.dot.setAttribute('opacity', 0);
+          newPath(p, now);
+        }
       });
-      t.addEventListener('pointerleave', function () {
-        t.classList.remove('is-tilting');
-        t.style.setProperty('--rx', '0deg');
-        t.style.setProperty('--ry', '0deg');
-      });
-    });
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   })();
 
 })();
