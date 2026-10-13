@@ -227,8 +227,8 @@ strong { font-weight: 600; color: var(--ink); }
   overflow: hidden;
   isolation: isolate;
   background: var(--sand);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 16%, transparent), 0 30px 60px -32px rgba(59, 42, 31, .55);
-  transition: transform .7s var(--ease), box-shadow .7s var(--ease);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  transition: transform .7s var(--ease), border-color .7s var(--ease);
   cursor: default;
 }
 .neuron__face img {
@@ -243,7 +243,7 @@ strong { font-weight: 600; color: var(--ink); }
   transition: opacity 1.2s var(--ease);
 }
 .neuron__color { opacity: 0; }
-.neuron__face:hover { transform: scale(1.07); box-shadow: 0 0 0 1px var(--terra), 0 40px 70px -32px rgba(59, 42, 31, .6); }
+.neuron__face:hover { transform: scale(1.07); border-color: var(--terra); }
 .neuron__face:hover .neuron__color { opacity: 1; }
 .neuron:has(.neuron__face:hover) .edge--face { stroke: var(--terra); stroke-width: 1.4; }
 .neuron:has(.neuron__face:hover) .node { fill: var(--sand); stroke: var(--terra); }
@@ -311,11 +311,11 @@ strong { font-weight: 600; color: var(--ink); }
   border-radius: 6px;
   overflow: hidden;
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
-  box-shadow: 0 1px 2px rgba(59, 42, 31, .08), 0 18px 40px -30px rgba(59, 42, 31, .5);
+  transition: transform .6s var(--ease), border-color .6s var(--ease);
+  border: 1px solid var(--line-soft);
 }
-.tile.is-tilting { transition: transform .12s linear, box-shadow .6s var(--ease); }
-.tile:hover { box-shadow: 0 2px 4px rgba(59, 42, 31, .1), 0 30px 60px -30px rgba(59, 42, 31, .6); }
+.tile.is-tilting { transition: transform .12s linear, border-color .6s var(--ease); }
+.tile:hover { border-color: var(--line); }
 .tile__glare {
   position: absolute;
   inset: 0;
@@ -366,7 +366,7 @@ strong { font-weight: 600; color: var(--ink); }
   padding: 8px 12px;
   border-radius: 4px;
   background: #fbf7ef;
-  box-shadow: 0 8px 20px -10px rgba(59, 42, 31, .5);
+  border: 1px solid var(--line-soft);
 }
 .tile__badge img { height: 28px; width: auto; mix-blend-mode: multiply; }
 .tile__badge--flush { padding: 0; width: 52px; height: 52px; overflow: hidden; }
